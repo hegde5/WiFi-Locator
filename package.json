@@ -1,0 +1,20 @@
+{
+  "name": "Wifi-Loc8r",
+  "version": "1.0.0",
+  "description": "Web Dev final project",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.15",
+    "multer": "^1.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Prasad N M, Dhanush Diwakar, Vinay Hegde",
+  "license": "ISC"
+}
+
+
