@@ -12,8 +12,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 
-require("./public/js/app")(app);
-
 //Heroku dynamically assigns the port. Need to fetch from env. 3000 port works locally
 var port      = process.env.PORT || 3000;
 app.listen(port);

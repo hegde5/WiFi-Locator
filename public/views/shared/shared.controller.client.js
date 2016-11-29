@@ -6,7 +6,7 @@
         .module("WifiLoc8rApp")
         .controller("SharedController", SharedController);
 
-    function ShareController() {
+    function SharedController() {
 
         console.log("Hello from the controller");
     }

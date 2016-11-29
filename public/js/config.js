@@ -3,7 +3,7 @@
  */
 (function() {
     angular
-        .module("WifiLoc8rApp", [])
+        .module("WifiLoc8rApp")
         .config(Config);
     function Config($routeProvider) {
         $routeProvider
