@@ -17,6 +17,16 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
+            .when("/login",{
+                templateUrl:"/views/user/login.view.client.html",
+                controller:"LoginController",
+                controllerAs:"model"
+            })
+            .when("/forgotPassword",{
+                templateUrl:"/views/user/forgotPassword.view.client.html",
+                controller:"ForgotPasswordController",
+                controllerAs:"model"
+            })
             .otherwise({
                 redirectTo: "/"
             });
