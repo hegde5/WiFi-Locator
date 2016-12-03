@@ -12,6 +12,11 @@
                 controller: "SharedController",
                 controllerAs: "model"
             })
+            .when("/register", {
+                templateUrl: "/views/user/register.view.client.html",
+                controller: "RegisterController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/"
             });
