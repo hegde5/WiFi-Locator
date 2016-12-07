@@ -17,6 +17,11 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
+            .when("/search",{
+                templateUrl: "/views/places/placesSearch.view.client.html",
+                controller: "PlaceSearchController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/"
             });
