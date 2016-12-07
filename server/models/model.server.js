@@ -14,12 +14,16 @@ module.exports = function() {
             '@ds035796.mlab.com:35796/wifi-loc8r';
     }
     else console.log("Connecting to local mongo...");
-    //mongoose.connect(connectionString);
+    mongoose.connect(connectionString);
 
-    var model = {};
+    var userModel = require("./user/user.model.server")();
+    var model = {
+        userModel: userModel
+    };
     /*
     * set all models here
     * */
+    userModel.setModel(model);
 
     return model;
 };

@@ -4,10 +4,15 @@
   "description": "Web Dev final project",
   "main": "server.js",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
+    "express-session": "^1.14.2",
     "mongoose": "^4.4.15",
-    "multer": "^1.2.0"
+    "multer": "^1.2.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,5 +21,3 @@
   "author": "Prasad N M, Dhanush Diwakar, Vinay Hegde",
   "license": "ISC"
 }
-
-
