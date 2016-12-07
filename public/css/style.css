@@ -1,0 +1,7 @@
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
+.no-underline {
+    text-decoration: none !important;
+}

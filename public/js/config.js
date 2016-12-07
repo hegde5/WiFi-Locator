@@ -17,7 +17,12 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/login",{
+            .when("/search",{
+                templateUrl: "/views/places/placesSearch.view.client.html",
+                controller: "PlaceSearchController",
+                controllerAs: "model"
+            })
+	    .when("/login",{
                 templateUrl:"/views/user/login.view.client.html",
                 controller:"LoginController",
                 controllerAs:"model"
