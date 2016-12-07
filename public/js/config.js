@@ -22,7 +22,7 @@
                 controller: "PlaceSearchController",
                 controllerAs: "model"
             })
-	    .when("/login",{
+	        .when("/login",{
                 templateUrl:"/views/user/login.view.client.html",
                 controller:"LoginController",
                 controllerAs:"model"
