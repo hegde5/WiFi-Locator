@@ -6,10 +6,11 @@
         .module("WifiLoc8rApp")
         .controller("PlaceSearchController", PlaceSearchController);
 
-    function PlaceSearchController($location,SearchService) {
+    function PlaceSearchController($location,SearchService, DisableSSL) {
 
         console.log("Hello from the PlaceSearchController");
 
+        DisableSSL.activate();
         var vm = this;
         vm.init = init;
         vm.search = search;
