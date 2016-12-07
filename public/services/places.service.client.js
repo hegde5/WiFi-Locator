@@ -21,7 +21,7 @@
             //console.log("jeeya jeeya" + zipcode);
             return $http({
                 method: 'GET',
-                url: 'http://api.workfrom.co/places/postal/'+zipcode+
+                url: 'https://api.workfrom.co/places/postal/'+zipcode+
                                         "?" + "appid="+appid,
                 // data: {
                 //     appid: 'bx6tusceypwTt4KP'
