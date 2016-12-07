@@ -1,5 +1,10 @@
 <div class="jumbotron text-center">
-    <div class="row"></div>
+    <div class="row">
+        <button class="btn waves-effect waves-light" name="action" ng-click="model.logout();">
+            Logout
+            <i class="material-icons left"></i>
+        </button>
+    </div>
     <div class="alert alert-danger" ng-show="model.error" role="alert">
         {{model.error}}
     </div>

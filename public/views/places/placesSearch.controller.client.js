@@ -6,7 +6,7 @@
         .module("WifiLoc8rApp")
         .controller("PlaceSearchController", PlaceSearchController);
 
-    function PlaceSearchController($location,SearchService, DisableSSL) {
+    function PlaceSearchController($location,SearchService, DisableSSL, UserService) {
 
         console.log("Hello from the PlaceSearchController");
 
@@ -14,6 +14,7 @@
         var vm = this;
         vm.init = init;
         vm.search = search;
+        vm.logout = logout;
 
 
         function init()
@@ -54,6 +55,17 @@
 
 
 
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .success(function(status) {
+                    if(status) $location.url("/login");
+                })
+                .error(function(err) {
+
+                });
         }
     }
 

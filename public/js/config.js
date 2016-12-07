@@ -20,7 +20,10 @@
             .when("/search",{
                 templateUrl: "/views/places/placesSearch.view.client.html",
                 controller: "PlaceSearchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    checkLoggedIn: checkLoggedIn
+                }
             })
 	        .when("/login",{
                 templateUrl:"/views/user/login.view.client.html",
@@ -36,6 +39,21 @@
                 redirectTo: "/"
             });
 
+        function checkLoggedIn($q, $location, UserService) {
+            var deferred = $q.defer();
+            UserService
+                .checkLoggedIn()
+                .success(function(user) {
+                    if(user) {
+                        deferred.resolve();
+                    }
+                    else {
+                        deferred.reject();
+                        $location.url("/login");
+                    }
+                });
+            return deferred.promise;
+        }
     }
 })();
 
