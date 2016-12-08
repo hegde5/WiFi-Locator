@@ -24,7 +24,7 @@
         init();
 
         function search(filterObj) {
-            console.log(filterObj);
+            console.log("filterObj: "+ filterObj);
 
             if(filterObj === undefined)
             {
@@ -32,12 +32,43 @@
             }
             else
             {
-                if(filterObj.zipcode !== undefined)
+                if(filterObj.zipcode !== undefined && filterObj.zipcode!="")
                 {
                     $(".preloader-wrapper").show();
                     var zipcode = filterObj.zipcode;
                     SearchService
                         .searchByZipcode(zipcode)
+                        .success(function (result) {
+                            $(".preloader-wrapper").hide();
+                            vm.resultSet = result.response;
+
+                        })
+                        .error(function (error) {
+                            console.log(error.stack);
+                        })
+                }
+                else if(filterObj.parameters.radius !== undefined)
+                {
+                    $(".preloader-wrapper").show();
+                    var radius = filterObj.parameters.radius;
+                    console.dir(filterObj);
+                    /*SearchService
+                        .searchByLocation(radius)
+                        .success(function (result) {
+                            $(".preloader-wrapper").hide();
+                            vm.resultSet = result.response;
+
+                        })
+                        .error(function (error) {
+                            console.log(error.stack);
+                        });*/
+                }
+                if(filterObj.name !== undefined && filterObj.name!="")
+                {
+                    $(".preloader-wrapper").show();
+                    var name = filterObj.name;
+                    SearchService
+                        .searchByName(name)
                         .success(function (result) {
                             $(".preloader-wrapper").hide();
                             vm.resultSet = result.response;

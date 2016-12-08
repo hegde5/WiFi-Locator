@@ -10,24 +10,43 @@
 
     function SearchService($http) {
 
+        var appid = "bx6tusceypwTt4KP";
         var api = {
-            searchByZipcode: searchByZipcode
-        }
+            searchByZipcode: searchByZipcode,
+            searchByLocation: searchByLocation,
+            searchByName: searchByName
+        };
         return api;
 
         function searchByZipcode(zipcode)
         {
-            var appid = "bx6tusceypwTt4KP";
             //console.log("jeeya jeeya" + zipcode);
             return $http({
                 method: 'GET',
                 url: 'http://api.workfrom.co/places/postal/'+zipcode+
-                                        "?" + "appid="+appid,
+                                        "?" + "appid="+appid
                 // data: {
                 //     appid: 'bx6tusceypwTt4KP'
                 // }
             });
+        }
 
+        function searchByLocation(radius)
+        {
+            return $http({
+                method: 'GET',
+                url: 'http://api.workfrom.co/places/ll/'+latitude+','+longitude+
+                "?" + "radius=" + radius + "&appid="+appid
+            });
+        }
+
+        function searchByName(name)
+        {
+            return $http({
+                method: 'GET',
+                url: 'http://api.workfrom.co/places/name/'+name+
+                "?" + "appid="+appid
+            });
         }
 
     }
