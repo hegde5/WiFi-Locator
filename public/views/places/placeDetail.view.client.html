@@ -1,0 +1,114 @@
+<div class="container-fluid">
+    <div class="alert alert-danger" ng-show="model.error" role="alert">
+        {{model.error}}
+    </div>
+    <div class="jumbotron jumbotron-bottom-less">
+        <!--TODO make this responsive: rearrange for mobile view-->
+        <div class="row">
+            <div class="col s4 m4">
+                <img ng-src="{{model.place.full_img}}" alt="{{model.place.title}}" title="{{model.place.title}}" class="full-img"/>
+            </div>
+            <div class="col s8 m8">
+                <span ng-show="model.place.status=='verified'" class="fa fa-check-circle text-muted" style="color:green;"> {{model.place.status}}</span>
+                <h2>{{model.place.title}}</h2>
+                <h5>{{model.place.street}}, {{model.place.city}} {{model.place.postal}}</h5>
+                <p class="desc-paragraph">{{model.place.description}}</p>
+                Type: {{model.place.type}}
+                <br><br>
+                <div class="fa fa-star-o"> Favorite</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s4 m4"></div>
+            <div class="col s8 m8">
+                <div class="row">
+                    <div class="col s4 m4">
+                        <div class="fa fa-arrow-down">
+                            <b>Download: </b>
+                            {{model.place.download+" Mbps" || "N/A"}}
+                        </div>
+                    </div>
+                    <div class="col s4 m4">
+                        <div class="fa fa-arrow-up">
+                            <b>Upload: </b>
+                            {{model.place.upload+" Mbps" || "N/A"}}
+                        </div>
+                    </div>
+                    <div class="col s4 m4">
+                        <div class="fa fa-plug">
+                            <b>Power outlet availability: </b>
+                            {{model.place.power || "N/A"}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s4 m4">
+                        <div class="fa fa-volume-up">
+                            <b>Noise Level: </b>
+                            {{model.place.noise || "N/A"}}
+                        </div>
+                    </div>
+                    <div class="col s4 m4">
+                        <div class="fa fa-users">
+                            <b>Capacity: </b>
+                            {{model.place.capacity || "N/A"}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col fa fa-cutlery">
+                        <b>Food: </b>
+                        {{model.place.food || "N/A"}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col fa fa-glass">
+                        <b>Alcohol: </b>
+                        {{model.place.alcohol || "N/A"}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col fa fa-clock-o">
+                        <b>Open hours today: </b>
+                        {{model.place.hr_formatted || "N/A"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3>Reviews</h3>
+    <form class="container">
+        <div class="row">
+            <div class="input-field col s6 m6">
+                <i class="material-icons prefix">title</i>
+                <input id="review_title" type="text"ng-model="model.newReview.title">
+                <label for="review_title">Title</label>
+            </div>
+            <div class="col s6 m6">
+                <span class="float-right">Rate
+                <i class="material-icons">star_border</i>
+                <i class="material-icons">star_border</i>
+                <i class="material-icons">star_border</i>
+                <i class="material-icons">star_border</i>
+                <i class="material-icons">star_border</i></span>
+            </div>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">rate_review</i>
+            <textarea id="review_desc" class="materialize-textarea" ng-model="model.newReview.description"></textarea>
+            <label for="review_desc">Write your review</label>
+        </div>
+        <a class="waves-effect waves-light btn no-underline float-right">
+            <i class="material-icons right"> play_for_work</i>
+            Submit
+        </a>
+    </form>
+    <div class="jumbotron">
+        Display all reviews here
+    </div>
+</div>

@@ -12,6 +12,16 @@
                 controller: "SharedController",
                 controllerAs: "model"
             })
+            .when("/login",{
+                templateUrl:"/views/user/login.view.client.html",
+                controller:"LoginController",
+                controllerAs:"model"
+            })
+            .when("/forgotPassword",{
+                templateUrl:"/views/user/forgotPassword.view.client.html",
+                controller:"ForgotPasswordController",
+                controllerAs:"model"
+            })
             .when("/register", {
                 templateUrl: "/views/user/register.view.client.html",
                 controller: "RegisterController",
@@ -25,14 +35,9 @@
                     checkLoggedIn: checkLoggedIn
                 }
             })
-	        .when("/login",{
-                templateUrl:"/views/user/login.view.client.html",
-                controller:"LoginController",
-                controllerAs:"model"
-            })
-            .when("/forgotPassword",{
-                templateUrl:"/views/user/forgotPassword.view.client.html",
-                controller:"ForgotPasswordController",
+            .when("/place/:id",{
+                templateUrl:"/views/places/placeDetail.view.client.html",
+                controller:"PlaceDetailController",
                 controllerAs:"model"
             })
             .otherwise({

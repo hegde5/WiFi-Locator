@@ -14,7 +14,8 @@
         var api = {
             searchByZipcode: searchByZipcode,
             searchByLocation: searchByLocation,
-            searchByName: searchByName
+            searchByName: searchByName,
+            getPlace: getPlace
         };
         return api;
 
@@ -46,6 +47,15 @@
                 method: 'GET',
                 url: 'http://api.workfrom.co/places/name/'+name+
                 "?" + "appid="+appid
+            });
+        }
+
+        function getPlace(id)
+        {
+            return $http({
+                method: 'GET',
+                url: 'http://api.workfrom.co/places/'+id+
+                "?" + "appid="+appid + "&dow="+(new Date()).getDay()
             });
         }
 

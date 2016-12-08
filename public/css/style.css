@@ -10,3 +10,22 @@ a, a:visited, a:hover, a:active {
     pointer-events: none;
     opacity:0.4;
 }
+
+.full-img {
+    width:100%;
+    height: auto;
+}
+
+.jumbotron-bottom-less {
+    padding-bottom: 0
+}
+
+.desc-paragraph {
+    text-align: justify;
+    font-style: italic;
+    line-height: 1.2;
+}
+
+.float-right {
+    float: right;
+}
