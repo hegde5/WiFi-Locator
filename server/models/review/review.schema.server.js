@@ -6,9 +6,9 @@ module.exports = function() {
     var ReviewSchema = mongoose.Schema({
         placeId: {type: mongoose.Schema.Types.ObjectId, ref:"place"},
         userId: {type: mongoose.Schema.Types.ObjectId, ref:"user"},
-        comment: String,
-        upVote: [{type: mongoose.Schema.Types.ObjectId, ref:"user"}],
-        downVote: [{type: mongoose.Schema.Types.ObjectId, ref:"user"}],
+        title: String,
+        description: String,
+        helpful: [{type: mongoose.Schema.Types.ObjectId, ref:"user"}],
         rating: Number,
         dateReviewed: {type:Date, default:Date.now}
     },{collection:"review"});
