@@ -24,9 +24,14 @@
         init();
 
         function search(filterObj) {
-            console.log("filterObj: "+ filterObj);
+            vm.error=null;
+            console.log("filterObj: "+ JSON.stringify(filterObj));
 
-            if(filterObj === undefined)
+            if(filterObj===undefined ||
+                (filterObj.name=="" && filterObj.zipcode=="") ||
+                (!filterObj.name && filterObj.zipcode=="") ||
+                (!filterObj.zipcode && filterObj.name=="")
+            )
             {
                 vm.error = "Please enter user search term";
             }
@@ -47,7 +52,7 @@
                             console.log(error.stack);
                         })
                 }
-                else if(filterObj.parameters.radius !== undefined)
+                else if(filterObj.parameters && filterObj.parameters.radius !== undefined)
                 {
                     $(".preloader-wrapper").show();
                     var radius = filterObj.parameters.radius;

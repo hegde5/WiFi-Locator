@@ -65,6 +65,9 @@
                 </div>
             </div>
 
+            <div ng-show="model.resultSet && model.resultSet.length==0">
+                <h4><span class="text-muted">No results to show</span></h4>
+            </div>
             <ul ng-repeat="eachPlace in model.resultSet" class="collection">
                 <li class="collection-item avatar">
                     <img ng-src="{{eachPlace.thumbnail_img}}" alt="thumb" class="circle">
