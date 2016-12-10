@@ -17,13 +17,14 @@ module.exports = function() {
     mongoose.connect(connectionString);
 
     var userModel = require("./user/user.model.server")();
+    var reviewModel = require("./review/review.model.server")();
+
     var model = {
-        userModel: userModel
+        userModel: userModel,
+        reviewModel: reviewModel
     };
-    /*
-    * set all models here
-    * */
     userModel.setModel(model);
+    reviewModel.setModel(model);
 
     return model;
 };

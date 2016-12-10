@@ -33,3 +33,17 @@ a, a:visited, a:hover, a:active {
 .rating:hover {
     cursor: pointer;
 }
+
+.collapsible-header {
+    font-weight: 800;
+    font-style: italic;
+}
+
+.collapsible-header img {
+    max-height: 30px;
+    width: auto
+}
+
+.collapsible-body p {
+    padding-top: 0px;
+}

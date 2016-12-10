@@ -6,7 +6,7 @@
         .module("WifiLoc8rApp")
         .controller("PlaceDetailController", PlaceDetailController);
 
-    function PlaceDetailController($routeParams, $rootScope, PlaceService) {
+    function PlaceDetailController($routeParams, $location, PlaceService, UserService, ReviewService) {
         var vm=this;
         vm.submitReview = submitReview;
 
@@ -14,13 +14,25 @@
         {
             $(document).ready(function(){
                 $('.rating').addRating({fieldName:"reviewRating",fieldId:"reviewRating"});
+                $('.collapsible').collapsible();
             });
             vm.error=null;
             var placeId = $routeParams.id;
             PlaceService
                 .getPlace(placeId)
                 .success(function(result) {
-                    if(result.response.length>0) vm.place=result.response[0];
+                    if(result.response.length>0) {
+                        vm.place=result.response[0];
+                        ReviewService
+                            .getReviewsForPlace(vm.place.ID)
+                            .success(function(reviews) {
+                                vm.reviews = reviews;
+                            })
+                            .error(function(err) {
+                                vm.error = "Could not fetch Reviews";
+                                console.log(err);
+                            })
+                    }
                     else vm.error="Something went wrong";
                 })
                 .error(function(error) {
@@ -30,10 +42,22 @@
         init();
 
         function submitReview() {
-            vm.newReview.rating = $('#reviewRating').val();
-            vm.newReview.userId = $rootScope.currentUser._id;
-            vm.newReview.placeId = $routeParams.id;
-
+            vm.reviewSubmission = null;
+            UserService
+                .getCurrentUser()
+                .success(function (user) {
+                    vm.newReview.user = user._id;
+                    vm.newReview.placeId = $routeParams.id;
+                    vm.newReview.rating = $('#reviewRating').val();
+                    ReviewService
+                        .createReview(vm.newReview)
+                        .success(function (review) {
+                            $location.url('#/place/' + review.placeId);
+                        });
+                })
+                .error(function (err) {
+                    vm.reviewSubmission = err;
+                });
         }
 
     }

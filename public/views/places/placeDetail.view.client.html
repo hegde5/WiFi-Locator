@@ -82,7 +82,7 @@
         </div>
     </div>
     <h3>Reviews</h3>
-    <form class="container">
+    <form class="container" style="margin-bottom: 25px">
         <div class="row">
             <div class="input-field col s6 m6">
                 <i class="material-icons prefix">title</i>
@@ -104,6 +104,18 @@
         </a>
     </form>
     <div class="jumbotron">
-        Display all reviews here
+        <ul class="collapsible popout" data-collapsible="accordion">
+            <li ng-repeat="review in model.reviews">
+                <div class="collapsible-header">
+                    <img ng-src="../../assets/material-letters/{{review.user.firstName[0].toUpperCase()}}.png">
+                    {{review.user.firstName}} {{review.user.lastName}}
+                    <div class="float-right">{{review.dateReviewed}}</div>
+                </div>
+                <div class="collapsible-body">
+                    <h5>{{review.title}}</h5> <div class="rating"></div>
+                    <p>{{review.description}}</p>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>

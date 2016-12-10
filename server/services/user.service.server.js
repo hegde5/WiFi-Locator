@@ -23,7 +23,7 @@ module.exports = function(app, model) {
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
-    app.post("/api/login", /*function(req,res){console.dir(req.body);}*/passport.authenticate('local'), login);
+    app.post("/api/login", passport.authenticate('local'), login);
     app.post("/api/checkLoggedIn", checkLoggedIn);
     app.post("/api/logout", logout);
     app.post("/api/register", register);
@@ -38,7 +38,6 @@ module.exports = function(app, model) {
     }
 
     function localStrategy(email, password, done) {
-        console.log("LocalStrategy called");
         model
             .userModel
             .findUserByEmail(email)
