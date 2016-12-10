@@ -25,7 +25,7 @@
                         else vm.error="Invalid credentials. Try again!";
                     })
                     .error(function(err) {
-                        console.log("Login error: "+err);
+                        console.log("Login error: "+err.stack);
                     });
             }
         }

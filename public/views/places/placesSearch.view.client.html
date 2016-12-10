@@ -103,9 +103,14 @@
                             </div>
                         </div>
 
-                        <button class="btn waves-effect waves-light" name="action">
+                        <button class="btn waves-effect waves-light" name="action" ng-click="model.updateUser()">
                             Update
                             <i class="material-icons right">system_update_alt</i>
+                        </button>
+
+                        <button class="btn waves-effect waves-light" name="action" ng-click="model.deleteUser()">
+                            Delete
+                            <i class="material-icons right">delete</i>
                         </button>
 
                     </form>

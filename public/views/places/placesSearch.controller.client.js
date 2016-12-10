@@ -14,23 +14,26 @@
         vm.search = search;
         vm.logout = logout;
         vm.openModal = openModal;
+        vm.updateUser = updateUser;
+        vm.deleteUser = deleteUser;
+
 
         function openModal()
         {
             $('.modal').modal();
 
-            UserService
-                .getCurrentUser()
-                .success(function (user) {
-                    //console.dir(user);
-                    vm.user = user;
-                })
         }
 
 
         function init()
         {
             $(".preloader-wrapper").hide();
+
+            UserService
+                .getCurrentUser()
+                .success(function (user) {
+                    vm.user = user;
+                })
         }
         init();
 
@@ -97,11 +100,6 @@
 
             }
 
-
-
-
-
-
         }
 
         function logout() {
@@ -111,6 +109,41 @@
                     if(status) $location.url("/login");
                 })
                 .error(function(err) {
+
+                });
+        }
+
+        function updateUser() {
+
+            UserService
+                .updateUser(vm.user,vm.user._id)
+                .success(function (status) {
+                    if(status)
+                    {
+                        $('#modal1').modal('close');
+                    }
+
+
+                })
+                .error(function (err) {
+                    
+                });
+
+        }
+        
+        function deleteUser() {
+
+            UserService
+                .deleteUser(vm.user._id)
+                .success(function (status) {
+                    if(status)
+                    {
+                        $('#modal1').modal('close');
+                        $location.url("/login");
+                    }
+
+                })
+                .error(function (err) {
 
                 });
         }
