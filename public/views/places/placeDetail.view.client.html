@@ -86,16 +86,11 @@
         <div class="row">
             <div class="input-field col s6 m6">
                 <i class="material-icons prefix">title</i>
-                <input id="review_title" type="text"ng-model="model.newReview.title">
+                <input id="review_title" type="text" ng-model="model.newReview.title">
                 <label for="review_title">Title</label>
             </div>
             <div class="col s6 m6">
-                <span class="float-right">Rate
-                <i class="material-icons">star_border</i>
-                <i class="material-icons">star_border</i>
-                <i class="material-icons">star_border</i>
-                <i class="material-icons">star_border</i>
-                <i class="material-icons">star_border</i></span>
+                <div class="rating"></div>
             </div>
         </div>
         <div class="input-field">
@@ -103,7 +98,7 @@
             <textarea id="review_desc" class="materialize-textarea" ng-model="model.newReview.description"></textarea>
             <label for="review_desc">Write your review</label>
         </div>
-        <a class="waves-effect waves-light btn no-underline float-right">
+        <a class="waves-effect waves-light btn no-underline float-right" ng-click="model.submitReview();">
             <i class="material-icons right"> play_for_work</i>
             Submit
         </a>

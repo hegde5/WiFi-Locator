@@ -5,21 +5,21 @@
 
     angular
         .module("WifiLoc8rApp")
-        .factory("SearchService", SearchService);
+        .factory("PlaceService", PlaceService);
 
 
-    function SearchService($http) {
+    function PlaceService($http) {
 
         var appid = "bx6tusceypwTt4KP";
         var api = {
-            searchByZipcode: searchByZipcode,
-            searchByLocation: searchByLocation,
-            searchByName: searchByName,
+            searchPlacesByZipcode: searchPlacesByZipcode,
+            searchPlacesByLocation: searchPlacesByLocation,
+            searchPlacesByName: searchPlacesByName,
             getPlace: getPlace
         };
         return api;
 
-        function searchByZipcode(zipcode)
+        function searchPlacesByZipcode(zipcode)
         {
             //console.log("jeeya jeeya" + zipcode);
             return $http({
@@ -32,7 +32,7 @@
             });
         }
 
-        function searchByLocation(radius)
+        function searchPlacesByLocation(radius)
         {
             return $http({
                 method: 'GET',
@@ -41,7 +41,7 @@
             });
         }
 
-        function searchByName(name)
+        function searchPlacesByName(name)
         {
             return $http({
                 method: 'GET',

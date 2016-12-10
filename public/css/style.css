@@ -29,3 +29,7 @@ a, a:visited, a:hover, a:active {
 .float-right {
     float: right;
 }
+
+.rating:hover {
+    cursor: pointer;
+}

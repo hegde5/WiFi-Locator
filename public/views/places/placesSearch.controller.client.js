@@ -6,7 +6,7 @@
         .module("WifiLoc8rApp")
         .controller("PlaceSearchController", PlaceSearchController);
 
-    function PlaceSearchController($location,SearchService, DisableSSL, UserService) {
+    function PlaceSearchController($location, PlaceService, DisableSSL, UserService) {
 
         console.log("Hello from the PlaceSearchController");
 
@@ -41,8 +41,8 @@
                 {
                     $(".preloader-wrapper").show();
                     var zipcode = filterObj.zipcode;
-                    SearchService
-                        .searchByZipcode(zipcode)
+                    PlaceService
+                        .searchPlacesByZipcode(zipcode)
                         .success(function (result) {
                             $(".preloader-wrapper").hide();
                             vm.resultSet = result.response;
@@ -57,8 +57,8 @@
                     $(".preloader-wrapper").show();
                     var radius = filterObj.parameters.radius;
                     console.dir(filterObj);
-                    /*SearchService
-                        .searchByLocation(radius)
+                    /*PlaceService
+                        .searchPlacesByLocation(radius)
                         .success(function (result) {
                             $(".preloader-wrapper").hide();
                             vm.resultSet = result.response;
@@ -72,8 +72,8 @@
                 {
                     $(".preloader-wrapper").show();
                     var name = filterObj.name;
-                    SearchService
-                        .searchByName(name)
+                    PlaceService
+                        .searchPlacesByName(name)
                         .success(function (result) {
                             $(".preloader-wrapper").hide();
                             vm.resultSet = result.response;
