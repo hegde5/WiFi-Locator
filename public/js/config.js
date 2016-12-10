@@ -40,6 +40,16 @@
                 controller:"PlaceDetailController",
                 controllerAs:"model"
             })
+            .when("/user/feedback",{
+                templateUrl:"/views/feedback/feedback.view.client.html",
+                controller:"FeedbackController",
+                controllerAs:"model"
+                })
+            .when("/admin/feedback",{
+                templateUrl:"/views/user/admin.feedback.view.client.html",
+                controller:"AdminController",
+                controllerAs:"model"
+            })
             .otherwise({
                 redirectTo: "/"
             });

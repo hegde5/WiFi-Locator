@@ -6,4 +6,5 @@ module.exports = function(app) {
     var model = require('./models/model.server.js')();
 
     require("./services/user.service.server")(app, model);
+    require("./services/feedback.service.server")(app, model);
 };
