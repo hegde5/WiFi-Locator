@@ -8,13 +8,24 @@
 
     function PlaceSearchController($location,SearchService, DisableSSL, UserService) {
 
-        console.log("Hello from the PlaceSearchController");
-
         DisableSSL.activate();
         var vm = this;
         vm.init = init;
         vm.search = search;
         vm.logout = logout;
+        vm.openModal = openModal;
+
+        function openModal()
+        {
+            $('.modal').modal();
+
+            UserService
+                .getCurrentUser()
+                .success(function (user) {
+                    //console.dir(user);
+                    vm.user = user;
+                })
+        }
 
 
         function init()

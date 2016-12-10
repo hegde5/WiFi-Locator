@@ -7,7 +7,7 @@
             <li class="active"><a href="#/search">Search</a></li>
             <li><a href="#/favorites">My Favorites</a></li>
             <li><a href="#/followees">People I Follow</a></li>
-            <li><a class="modal-trigger waves-effect waves-light" href="#modal1">Profile</a></li>
+            <li><a class="modal-trigger waves-effect waves-light" data-target="modal1" ng-click="model.openModal()">Profile</a></li>
             <li><a class="waves-effect waves-light btn" ng-click="model.logout();">Logout</a></li>
         </ul>
         <!--TODO side nave does not work now. Fix it!-->
@@ -21,16 +21,7 @@
     </div>
 </nav>
 
-<!-- Modal Structure -->
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-    </div>
-</div>
+
 
 
 <div class="jumbotron text-center">
@@ -72,11 +63,58 @@
 
         <div class="row">
             <br>
-            <a class="waves-effect waves-light btn-large no-underline" ng-click="model.search(model.filters)">
+            <a id="clickEvent1" class="waves-effect waves-light btn-large no-underline" ng-click="model.search(model.filters)">
                 <i class="material-icons right"> play_for_work</i>
                 Search
             </a>
         </div>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+
+            <div class="modal-content">
+                <h4>Edit Profile</h4>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="firstName" type="text" class="validate" ng-model="model.user.firstName">
+                                <label class="active" for="firstName">First Name</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="lastName" type="text" class="validate" ng-model="model.user.lastName">
+                                <label class="active" for="lastName">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">email</i>
+                                <input id="email" type="email" class="validate" ng-model="model.user.email">
+                                <label class="active" for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">call</i>
+                                <input id="phone" type="tel" class="validate" ng-model="model.user.phone">
+                                <label class="active" for="phone">Phone</label>
+                            </div>
+                        </div>
+
+                        <button class="btn waves-effect waves-light" name="action">
+                            Update
+                            <i class="material-icons right">system_update_alt</i>
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+
 
         <div class="row">
             <!--search results-->
@@ -114,18 +152,3 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function(){
-        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal-trigger').leanModal();
-    });
-
-
-    //Or just use Jquery Element like
-
-    /*$('.modal-trigger').on('click', function() {
-        console.log("in jQuery handler");
-        $('#modal1').modal('open');
-    });*/
-    //$('.modal-trigger').modal();
-</script>

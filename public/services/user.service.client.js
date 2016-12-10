@@ -11,6 +11,7 @@
             register        : register,
             login           : login,
             checkLoggedIn   : checkLoggedIn,
+            getCurrentUser : getCurrentUser,
             logout          : logout
         };
         return api;
@@ -29,6 +30,10 @@
 
         function checkLoggedIn() {
             return $http.post("/api/checkLoggedIn");
+        }
+        
+        function getCurrentUser() {
+            return $http.get("/api/user");
         }
 
         function logout() {
