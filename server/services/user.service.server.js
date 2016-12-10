@@ -38,18 +38,22 @@ module.exports = function(app, model) {
     }
 
     function localStrategy(email, password, done) {
+        console.log("LocalStrategy called");
         model
             .userModel
             .findUserByEmail(email)
             .then(
                 function(user) {
                     if(user && bcrypt.compareSync(password, user.password)) {
+                        console.log("User found");
                         return done(null, user);
                     } else {
+                        console.log("User Not found");
                         return done(null, false);
                     }
                 },
                 function(error) {
+                    console.log("In error condition");
                     return done(error);
                 }
             );
@@ -145,7 +149,7 @@ module.exports = function(app, model) {
 
     function updateUser(req, res) {
         var user = req.body;
-        var uid = req.params.uid;
+        var uid = user._id;
         model
             .userModel
             .updateUser(uid, user)
@@ -174,4 +178,6 @@ module.exports = function(app, model) {
                 }
             );
     }
+
+
 };

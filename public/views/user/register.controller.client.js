@@ -11,7 +11,6 @@
         vm.register = register;
 
         function register() {
-            console.log("Hello from the Register");
             vm.error=null;
             if(!vm.user || !vm.user.email) vm.error = "Enter a valid email";
             else if(!vm.user || !vm.user.password) vm.error = "Enter a password";

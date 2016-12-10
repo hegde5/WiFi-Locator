@@ -11,6 +11,9 @@
             register        : register,
             login           : login,
             checkLoggedIn   : checkLoggedIn,
+            getCurrentUser : getCurrentUser,
+            updateUser : updateUser,
+            deleteUser : deleteUser,
             logout          : logout
         };
         return api;
@@ -30,9 +33,24 @@
         function checkLoggedIn() {
             return $http.post("/api/checkLoggedIn");
         }
+        
+        function getCurrentUser() {
+            return $http.get("/api/user");
+        }
+        
+        function updateUser(user, userId) {
+            var url = "/api/user/" + userId;
+            return $http.put(url, user);
+        }
 
         function logout() {
             return $http.post("/api/logout");
+        }
+
+        function deleteUser(userId) {
+            var url = "/api/user/" + userId;
+            return $http.delete(url);
+
         }
     }
 })();
