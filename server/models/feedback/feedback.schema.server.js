@@ -4,9 +4,9 @@
 module.exports = function() {
     var mongoose = require('mongoose');
     var FeedbackSchema = mongoose.Schema({
-        userId: {type: mongoose.Schema.Types.ObjectId, ref:"user"},
+        user: {type: mongoose.Schema.Types.ObjectId, ref:"UserModel"},
         title: String,
-        text: String,
+        suggestion: String,
         dateCreated: {type:Date, default:Date.now}
     },{collection:"feedback"});
 

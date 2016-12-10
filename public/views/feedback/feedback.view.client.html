@@ -1,0 +1,50 @@
+<div class="jumbotron text-center">
+    <div class="container-fluid">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col s3 m3"></div>
+            <div class="col s6 m6">
+                <div class="card">
+                    <span class="card-title">User Feedback</span>
+                    <div ng-show="model.error" class="alert alert-danger" role="alert">
+                        {{model.error}}
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">account_circle</i>
+                                        <input id="title" type="text" class="validate" ng-model="model.feedback.title">
+                                        <label for="title">Title</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">mode_edit</i>
+                                        <textarea id="icon_prefix2" class="materialize-textarea" ng-model="model.feedback.suggestion">
+                                        </textarea>
+                                        <label for="icon_prefix2">Feedback</label>
+                                    </div>
+                                </div>
+                                <button class="btn waves-effect waves-light" data-target="modal1" ng-click="model.submitFeedback();">
+                                    Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s3 m3"></div>
+        </div>
+
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Thanks a lot for submitting your feedback!</h4>
+            </div>
+        </div>
+
+    </div>
+</div>

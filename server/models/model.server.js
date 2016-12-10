@@ -18,13 +18,17 @@ module.exports = function() {
 
     var userModel = require("./user/user.model.server")();
     var reviewModel = require("./review/review.model.server")();
+    var feedbackModel = require("./feedback/feedback.model.server")();
 
     var model = {
         userModel: userModel,
-        reviewModel: reviewModel
+        reviewModel: reviewModel,
+        feedbackModel: feedbackModel
     };
+   
     userModel.setModel(model);
     reviewModel.setModel(model);
+    feedbackModel.setModel(model);
 
     return model;
 };
