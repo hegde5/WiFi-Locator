@@ -31,7 +31,8 @@ module.exports = function () {
             .populate('user',
                 {
                     firstName:1,
-                    lastName:1
+                    lastName:1,
+                    email: 1
                 })
             .exec();
     }

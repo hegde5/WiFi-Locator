@@ -30,6 +30,11 @@ a, a:visited, a:hover, a:active {
     float: right;
 }
 
+.user-feedback {
+    background-image: url("../assets/userFeedback.png");
+    background-repeat: repeat-x;
+}
+
 .rating:hover {
     cursor: pointer;
 }
