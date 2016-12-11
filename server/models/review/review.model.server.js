@@ -29,7 +29,7 @@ module.exports = function() {
         return ReviewModel
             .findById(reviewId)
             .then(function(review) {
-                if(!review.helpful.contains(userId)) {
+                if(review.helpful.indexOf(userId)==-1) {
                     review.helpful.push(userId);
                     return review.save();
                 }
