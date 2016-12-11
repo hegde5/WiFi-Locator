@@ -4,8 +4,8 @@
 module.exports = function() {
     var mongoose = require('mongoose');
     var CommentSchema = mongoose.Schema({
-        userId: {type: mongoose.Schema.Types.ObjectId, ref:"user"},
-        reviewId: {type: mongoose.Schema.Types.ObjectId, ref:"review"},
+        userId: {type: mongoose.Schema.Types.ObjectId, ref:"UserModel"},
+        reviewId: {type: mongoose.Schema.Types.ObjectId, ref:"ReviewModel"},
         text: String,
         dateCommented: {type:Date, default:Date.now}
     },{collection:"comment"});

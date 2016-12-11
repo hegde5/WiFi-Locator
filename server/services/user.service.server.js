@@ -25,13 +25,24 @@ module.exports = function(app, model) {
 
     app.post("/api/login", passport.authenticate('local'), login);
     app.post("/api/checkLoggedIn", checkLoggedIn);
+    app.post("/api/checkAdmin", checkAdmin);
     app.post("/api/logout", logout);
     app.post("/api/register", register);
     app.get("/api/user", findUser);
     app.get("/api/user/:uid", findUserById);
-    app.put("/api/user/:uid", updateUser);
+    app.put("/api/user/:uid", loggedInAndSelf, updateUser);
     app.post("/api/user/:uid/favorites", addToFavorites);
-    app.delete("/api/user/:uid", deleteUser);
+    app.delete("/api/user/:uid", loggedInAndSelf, deleteUser);
+
+    function loggedInAndSelf(req, res, next) {
+        var loggedIn = req.isAuthenticated();
+        var self = req.params.uid == req.user._id;
+        if(self && loggedIn) {
+            next();
+        } else {
+            res.sendStatus(400).send("You do not have the permission");
+        }
+    }
 
 
     function login(req, res) {
@@ -80,6 +91,16 @@ module.exports = function(app, model) {
 
     function checkLoggedIn(req, res) {
         res.send(req.isAuthenticated()? req.user: undefined);
+    }
+
+    function checkAdmin(req, res) {
+        var loggedIn = req.isAuthenticated();
+        var isAdmin = req.user.role == "ADMIN";
+        if(loggedIn && isAdmin) {
+            res.send(req.user);
+        } else {
+            res.send(undefined);
+        }
     }
 
     function logout(req, res) {

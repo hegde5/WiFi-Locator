@@ -1,3 +1,26 @@
+.logo-image {
+    height: 48px;
+    width: auto;
+    padding-left: 10px;
+}
+
+@media (max-width: 600px) {
+    .logo-img {
+        height: 40px;
+        padding-left: 8px;
+    }
+}
+
+.fit-image {
+    height: 20px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.modal {
+    overflow: hidden;
+}
+
 a, a:visited, a:hover, a:active {
     color: inherit;
 }
@@ -16,8 +39,20 @@ a, a:visited, a:hover, a:active {
     height: auto;
 }
 
+.align-jusify {
+    text-align: justify;
+}
+
 .jumbotron-bottom-less {
     padding-bottom: 0
+}
+
+.jumbotron-bottom-margin-less {
+    margin-bottom: 0;
+}
+
+.footer-margin-top-less {
+    margin-top: 0 !important;
 }
 
 .desc-paragraph {

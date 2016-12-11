@@ -12,17 +12,6 @@
         var vm = this;
         vm.init = init;
         vm.search = search;
-        vm.logout = logout;
-        vm.openModal = openModal;
-        vm.updateUser = updateUser;
-        vm.deleteUser = deleteUser;
-
-        function openModal()
-        {
-            $('#modal1').modal();
-
-        }
-
 
         function init()
         {
@@ -106,52 +95,6 @@
 
             }
 
-        }
-
-        function logout() {
-            UserService
-                .logout()
-                .success(function(status) {
-                    if(status) $location.url("/login");
-                })
-                .error(function(err) {
-
-                });
-        }
-
-        function updateUser() {
-
-            UserService
-                .updateUser(vm.user,vm.user._id)
-                .success(function (status) {
-                    if(status)
-                    {
-                        $('#modal1').modal('close');
-                    }
-
-
-                })
-                .error(function (err) {
-                    
-                });
-
-        }
-        
-        function deleteUser() {
-
-            UserService
-                .deleteUser(vm.user._id)
-                .success(function (status) {
-                    if(status)
-                    {
-                        $('#modal1').modal('close');
-                        $location.url("/login");
-                    }
-
-                })
-                .error(function (err) {
-
-                });
         }
     }
 

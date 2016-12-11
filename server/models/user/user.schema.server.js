@@ -10,6 +10,7 @@ module.exports = function() {
         phone: Number,
         password: String,
         address: {zipcode:String, city: String},
+        role: {type: String, enum: ['ADMIN', 'USER'], default: 'USER'},
         dateCreated: {type:Date, default: Date.now},
         followers : [{type:mongoose.Schema.Types.ObjectId, ref:"UserModel"}],
         favorites: [{type:mongoose.Schema.Types.ObjectId, ref:"PlaceModel"}]

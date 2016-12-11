@@ -11,9 +11,10 @@
             register        : register,
             login           : login,
             checkLoggedIn   : checkLoggedIn,
-            getCurrentUser : getCurrentUser,
-            updateUser : updateUser,
-            deleteUser : deleteUser,
+            checkAdmin      : checkAdmin,
+            getCurrentUser  : getCurrentUser,
+            updateUser      : updateUser,
+            deleteUser      : deleteUser,,
             addToFavorites : addToFavorites,
             logout          : logout
         };
@@ -33,6 +34,10 @@
 
         function checkLoggedIn() {
             return $http.post("/api/checkLoggedIn");
+        }
+
+        function checkAdmin() {
+            return $http.post("/api/checkAdmin");
         }
         
         function getCurrentUser() {
