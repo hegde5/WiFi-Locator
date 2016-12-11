@@ -30,20 +30,23 @@
             .when("/search",{
                 templateUrl: "/views/places/placesSearch.view.client.html",
                 controller: "PlaceSearchController",
-                controllerAs: "model",
-                resolve: {
-                    checkLoggedIn: checkLoggedIn
-                }
+                controllerAs: "model"
             })
             .when("/place/:id",{
                 templateUrl:"/views/places/placeDetail.view.client.html",
                 controller:"PlaceDetailController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve: {
+                    checkLoggedIn: checkLoggedIn
+                }
             })
             .when("/user/feedback",{
                 templateUrl:"/views/feedback/feedback.view.client.html",
                 controller:"FeedbackController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve: {
+                    checkLoggedIn: checkLoggedIn
+                }
                 })
             .when("/admin/feedback",{
                 templateUrl:"/views/user/admin.feedback.view.client.html",
