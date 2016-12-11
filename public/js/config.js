@@ -50,6 +50,11 @@
                 controller:"AdminController",
                 controllerAs:"model"
             })
+            .when("/loginRedirect",{
+                templateUrl:"/views/shared/loginRedirect.view.client.html",
+                controller:"SharedController",
+                controllerAs:"model"
+            })
             .otherwise({
                 redirectTo: "/"
             });
