@@ -29,8 +29,18 @@ module.exports = function(app, model) {
     app.post("/api/register", register);
     app.get("/api/user", findUser);
     app.get("/api/user/:uid", findUserById);
-    app.put("/api/user/:uid", updateUser);
-    app.delete("/api/user/:uid", deleteUser);
+    app.put("/api/user/:uid", loggedInAndSelf, updateUser);
+    app.delete("/api/user/:uid", loggedInAndSelf, deleteUser);
+
+    function loggedInAndSelf(req, res, next) {
+        var loggedIn = req.isAuthenticated();
+        var self = req.params.uid == req.user._id;
+        if(self && loggedIn) {
+            next();
+        } else {
+            res.sendStatus(400).send("You do not have the permission");
+        }
+    }
 
 
     function login(req, res) {
