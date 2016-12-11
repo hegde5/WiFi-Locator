@@ -10,14 +10,19 @@
         var months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'];
         var vm=this;
         vm.submitReview = submitReview;
+        vm.getAllReviews = getAllReviews;
 
         function init()
         {
-            console.log("Review Controller");
             $(document).ready(function(){
                 $('.rating').addRating({fieldName:"reviewRating",fieldId:"reviewRating"});
                 $('.collapsible').collapsible();
             });
+            getAllReviews();
+        }
+        init();
+
+        function getAllReviews() {
             vm.error=null;
             var placeId = $routeParams.id;
             PlaceService
@@ -46,7 +51,6 @@
                     console.log(error.stack);
                 });
         }
-        init();
 
         function submitReview() {
             vm.reviewSubmission = null;
@@ -59,7 +63,7 @@
                     ReviewService
                         .createReview(vm.newReview)
                         .success(function (review) {
-                            $location.url('#/place/' + review.placeId);
+                            getAllReviews();
                         });
                 })
                 .error(function (err) {
