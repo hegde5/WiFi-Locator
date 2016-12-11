@@ -1,14 +1,27 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="#!" class="brand-logo"><img src="../../assets/logo.png" class="logo-image"></a>
+        <a href="#!" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+        <ul class="right hide-on-med-and-down">
+            <li class="active"><a href="#/search">Search</a></li>
+            <li><a class="waves-effect waves-light btn" href="#/register">Register</a></li>
+        </ul>
+    </div>
+</nav>
 
 <div class="row">
     <div class="col s12 m12">
         <div class="card-panel">
             <div class="row">
+
                 <div class="card-title">Login</div>
+
                 <div ng-show="model.error" class="alert alert-danger" role="alert">
                     {{model.error}}
                 </div>
-                <form class="col s12">
 
+                <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="email" type="email" class="validate" ng-model="model.email">
@@ -31,39 +44,12 @@
                                 <i class="material-icons right"></i>
                             </button>
                         </div>
-
                     </div>
-
-
                 </form>
+
             </div>
         </div>
     </div>
-    <div class="col s12 m12">
-            <footer class="page-footer teal">
-                <div class="container">
-                    <div class="row">
-                        <div class="col l6 s12">
-                            <h5 class="white-text">Footer Content</h5>
-                            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                        </div>
-                        <div class="col l4 offset-l2 s12">
-                            <h5 class="white-text">Links</h5>
-                            <ul>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-copyright">
-                    <div class="container">
-                        © 2016 powered by Workfrom.co
-                        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-                    </div>
-                </div>
-            </footer>
-    </div>
 </div>
+
+<wifi-loc8r-footer></wifi-loc8r-footer>
