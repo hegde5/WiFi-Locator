@@ -25,6 +25,7 @@ module.exports = function(app, model) {
 
     app.post("/api/login", passport.authenticate('local'), login);
     app.post("/api/checkLoggedIn", checkLoggedIn);
+    app.post("/api/checkAdmin", checkAdmin);
     app.post("/api/logout", logout);
     app.post("/api/register", register);
     app.get("/api/user", findUser);
@@ -89,6 +90,16 @@ module.exports = function(app, model) {
 
     function checkLoggedIn(req, res) {
         res.send(req.isAuthenticated()? req.user: undefined);
+    }
+
+    function checkAdmin(req, res) {
+        var loggedIn = req.isAuthenticated();
+        var isAdmin = req.user.role == "ADMIN";
+        if(loggedIn && isAdmin) {
+            res.send(req.user);
+        } else {
+            res.send(undefined);
+        }
     }
 
     function logout(req, res) {

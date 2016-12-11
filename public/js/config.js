@@ -47,11 +47,14 @@
                 resolve: {
                     checkLoggedIn: checkLoggedIn
                 }
-                })
+            })
             .when("/admin/feedback",{
                 templateUrl:"/views/user/admin.feedback.view.client.html",
                 controller:"AdminController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve: {
+                    checkAdmin: checkAdmin
+                }
             })
             .otherwise({
                 redirectTo: "/"
@@ -61,6 +64,22 @@
             var deferred = $q.defer();
             UserService
                 .checkLoggedIn()
+                .success(function(user) {
+                    if(user) {
+                        deferred.resolve();
+                    }
+                    else {
+                        deferred.reject();
+                        $location.url("/login");
+                    }
+                });
+            return deferred.promise;
+        }
+
+        function checkAdmin($q, $location, UserService) {
+            var deferred = $q.defer();
+            UserService
+                .checkAdmin()
                 .success(function(user) {
                     if(user) {
                         deferred.resolve();
