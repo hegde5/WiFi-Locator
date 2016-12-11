@@ -1,0 +1,53 @@
+<div ng-controller="ReviewController as model">
+    <h3>Reviews</h3>
+    <form class="container review-form-margin">
+        <div class="row">
+            <div class="input-field col s6 m6">
+                <i class="material-icons prefix">title</i>
+                <input id="review_title" type="text" ng-model="model.newReview.title">
+                <label for="review_title">Title</label>
+            </div>
+            <div class="col s6 m6">
+                <div class="rating"></div>
+            </div>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">rate_review</i>
+            <textarea id="review_desc" class="materialize-textarea" ng-model="model.newReview.description"></textarea>
+            <label for="review_desc">Write your review</label>
+        </div>
+        <a class="waves-effect waves-light btn no-underline float-right" ng-click="model.submitReview();">
+            <i class="material-icons right"> play_for_work</i>
+            Submit
+        </a>
+    </form>
+
+    <div class="jumbotron review-jumbotron" ng-show="model.reviews.length>0">
+        <ul class="collapsible popout" data-collapsible="accordion">
+            <li ng-repeat="review in model.reviews">
+                <div class="collapsible-header">
+                    <img ng-src="../../assets/material-letters/{{review.user.firstName[0].toUpperCase()}}.png">
+                    <span class="collapsible-header-name">{{review.user.firstName}} {{review.user.lastName}}</span>
+                    <div class="float-right">{{review.dateReviewed}}</div>
+                </div>
+                <div class="collapsible-body">
+                    <div class="review-title">
+                        <h5>
+                            {{review.title}}
+                            <span class="float-right"><i class="material-icons">star</i>
+                            <span ng-if="review.rating>1"><i class="material-icons">star</i></span>
+                            <span ng-if="review.rating<=1"><i class="material-icons">star_border</i></span>
+                            <span ng-if="review.rating>2"><i class="material-icons">star</i></span>
+                            <span ng-if="review.rating<=2"><i class="material-icons">star_border</i></span>
+                            <span ng-if="review.rating>3"><i class="material-icons">star</i></span>
+                            <span ng-if="review.rating<=3"><i class="material-icons">star_border</i></span>
+                            <span ng-if="review.rating>4"><i class="material-icons">star</i></span>
+                            <span ng-if="review.rating<=4"><i class="material-icons">star_border</i></span></span>
+                        </h5>
+                    </div>
+                    <p>{{review.description}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

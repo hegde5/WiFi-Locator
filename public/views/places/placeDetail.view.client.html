@@ -81,41 +81,8 @@
             </div>
         </div>
     </div>
-    <h3>Reviews</h3>
-    <form class="container" style="margin-bottom: 25px">
-        <div class="row">
-            <div class="input-field col s6 m6">
-                <i class="material-icons prefix">title</i>
-                <input id="review_title" type="text" ng-model="model.newReview.title">
-                <label for="review_title">Title</label>
-            </div>
-            <div class="col s6 m6">
-                <div class="rating"></div>
-            </div>
-        </div>
-        <div class="input-field">
-            <i class="material-icons prefix">rate_review</i>
-            <textarea id="review_desc" class="materialize-textarea" ng-model="model.newReview.description"></textarea>
-            <label for="review_desc">Write your review</label>
-        </div>
-        <a class="waves-effect waves-light btn no-underline float-right" ng-click="model.submitReview();">
-            <i class="material-icons right"> play_for_work</i>
-            Submit
-        </a>
-    </form>
-    <div class="jumbotron">
-        <ul class="collapsible popout" data-collapsible="accordion">
-            <li ng-repeat="review in model.reviews">
-                <div class="collapsible-header">
-                    <img ng-src="../../assets/material-letters/{{review.user.firstName[0].toUpperCase()}}.png">
-                    {{review.user.firstName}} {{review.user.lastName}}
-                    <div class="float-right">{{review.dateReviewed}}</div>
-                </div>
-                <div class="collapsible-body">
-                    <h5>{{review.title}}</h5> <div class="rating"></div>
-                    <p>{{review.description}}</p>
-                </div>
-            </li>
-        </ul>
+
+    <div ng-if="1"><!--check if logged in-->
+        <div ng-include="'views/reviews/reviews.view.client.html'"></div>
     </div>
 </div>

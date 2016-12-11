@@ -34,7 +34,7 @@ a, a:visited, a:hover, a:active {
     cursor: pointer;
 }
 
-.collapsible-header {
+.collapsible-header-name {
     font-weight: 800;
     font-style: italic;
 }
@@ -46,4 +46,20 @@ a, a:visited, a:hover, a:active {
 
 .collapsible-body p {
     padding-top: 0px;
+}
+
+.review-form-margin {
+    margin-bottom: 25px;
+}
+
+.review-jumbotron {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+}
+
+.review-title {
+    padding-right: 10px;
+    padding-left: 10px;
 }
