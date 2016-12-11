@@ -66,6 +66,14 @@
                 controller:"FavoritesController",
                 controllerAs:"model"
             })
+            .when("/following",{
+                templateUrl: "/views/user/following.view.client.html",
+                controller:"FollowingController",
+                controllerAs:"model",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
+            })
             .otherwise({
                 redirectTo: "/"
             });
