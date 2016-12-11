@@ -1,22 +1,4 @@
-<nav>
-    <div class="nav-wrapper">
-        <a href="#!" class="brand-logo"><img src="../../assets/logo.png" class="logo-image"></a>
-        <a href="#!" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-
-        <ul class="right hide-on-med-and-down">
-            <li class="active"><a href="#/search">Search</a></li>
-            <span ng-if="model.user._id">
-                <li><a href="#/favorites">My Favorites</a></li>
-                <li><a href="#/followees">People I Follow</a></li>
-                <li><a class="modal-trigger waves-effect waves-light" data-target="modal1" ng-click="model.openModal()">Profile</a></li>
-                <li><a class="waves-effect waves-light btn" ng-click="model.logout();">Logout</a></li>
-            </span>
-            <span ng-if="!model.user._id">
-                <li><a class="waves-effect waves-light btn" href="#/login">Login</a></li>
-            </span>
-        </ul>
-    </div>
-</nav>
+<wifi-loc8r-header></wifi-loc8r-header>
 
 
 
@@ -65,55 +47,6 @@
                 Search
             </a>
         </div>
-
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-
-            <div class="modal-content">
-                <h4>Edit Profile</h4>
-                <div class="row">
-                    <form class="col s12">
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input id="firstName" type="text" class="validate" ng-model="model.user.firstName">
-                                <label class="active" for="firstName">First Name</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input id="lastName" type="text" class="validate" ng-model="model.user.lastName">
-                                <label class="active" for="lastName">Last Name</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">email</i>
-                                <input id="email" type="email" class="validate" ng-model="model.user.email">
-                                <label class="active" for="email">Email</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">call</i>
-                                <input id="phone" type="tel" class="validate" ng-model="model.user.phone">
-                                <label class="active" for="phone">Phone</label>
-                            </div>
-                        </div>
-
-                        <button class="btn waves-effect waves-light" name="action" ng-click="model.updateUser()">
-                            Update
-                            <i class="material-icons right">system_update_alt</i>
-                        </button>
-
-                        <button class="btn waves-effect waves-light" name="action" ng-click="model.deleteUser()">
-                            Delete
-                            <i class="material-icons right">delete</i>
-                        </button>
-
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
         </div>
 
@@ -151,69 +84,4 @@
             </ul>
         </div>
 
-
-
-
-<!-- Footer -->
-<footer class="page-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col l4 s12"></div>
-            <div class="col l4 s12">
-                <a class="waves-effect waves-light btn-large no-underline" href="#/user/feedback">
-                    <i class="material-icons left">chat</i>Submit Feedback</a>
-            </div>
-            <div class="col l3 s12"></div>
-        </div>
-
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">What does WiFi-Loc8r do?</h5>
-                <p class="grey-text text-lighten-4 align-jusify">
-                    Glad you asked!<br>
-                    Ever been in a situation when you wanted to work from
-                    home but couldn't because of your crappy internet connection?<br>
-                    We have too.<br>
-                    And that's why we built this.<br>
-                    Now you can find places around you to work from and not struggle to
-                    find a good internet connection. There a bigger problems to tackle.
-                </p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Developed by</h5>
-                <ul>
-                    <li>
-                        <img class="fit-image" src="../../assets/linkedin.png">
-                        <a class="grey-text text-lighten-3" target="_blank" href="https://www.linkedin.com/in/prasadnm">
-                            JP
-                        </a>
-                    </li>
-                    <li>
-                        <img class="fit-image" src="../../assets/linkedin.png">
-                        <a class="grey-text text-lighten-3" target="_blank" href="https://www.linkedin.com/in/vinayhegde1">
-                            Vinay
-                        </a>
-                    </li>
-                    <li>
-                        <img class="fit-image" src="../../assets/linkedin.png">
-                        <a class="grey-text text-lighten-3" target="_blank" href="https://www.linkedin.com/in/dhanush92">
-                            Dhanush
-                        </a>
-                    </li>
-                    <li>
-                        <span class="text-lighten-3">powered by</span>
-                        <a class="grey-text text-lighten-3" target="_blank" href="https://workfrom.co/">
-                            Workfrom.co
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright" ng-controller="FooterController as model">
-        <div class="container">
-            Copyright © {{model.currentYear}} WiFi Loc8r
-        </div>
-    </div>
-</footer>
-
+<wifi-loc8r-footer></wifi-loc8r-footer>
