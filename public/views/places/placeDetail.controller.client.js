@@ -15,8 +15,8 @@
         function init()
         {
             vm.error=null;
-            vm.favStatus = 0;
-            var placeId = $routeParams.id;
+            vm.favStatus = false;
+            var placeId = vm.placeId;
             PlaceService
                 .getPlace(placeId)
                 .success(function(result) {
@@ -33,6 +33,8 @@
                 .getPlaceByPlaceId(placeId)
                 .success(function (result) {
                     vm.currentPlace = result;
+                    console.log("Current place Resulrt");
+                    console.dir(result);
                 })
                 .error(function (error) {
                     console.log(error.stack);
@@ -44,15 +46,12 @@
                     if(user)
                     {
                         vm.user = user;
-                        var flag = checkFavorites();
-                        if(flag)
-                            vm.favStatus = 1;
+                        vm.favStatus = checkFavorites();
                     }
                 })
                 .error(function (error) {
                     console.log(error.stack);
                 });
-            setCarousel();
         }
         init();
 
@@ -60,7 +59,7 @@
 
             var flag = checkFavorites();
 
-            if(flag == false)
+            if(!flag)
             {
                 var place = {
                     placeId: vm.place.ID,
@@ -82,18 +81,16 @@
                     .error(function () {
 
                     });
-                vm.favStatus = 1;
             }
-            else
-            {
-                vm.favStatus = 0;
-            }
+            vm.favStatus = true;
         }
 
         function checkFavorites() {
 
-            if(vm.currentPlace && vm.currentPlace === '0')
+            if(vm.currentPlace === undefined || vm.currentPlace === '0')
             {
+                console.log("In false");
+                console.dir(vm.currentPlace);
                 return false;
             }
 
@@ -102,7 +99,13 @@
             for(var i = 0; i <favLen; i++)
             {
                 if(favoritePlaces[i] === vm.currentPlace._id)
+                {
+                    console.log(favoritePlaces[i]);
+                    console.log("-----");
+                    console.log(vm.currentPlace._id);
                     return true;
+                }
+
             }
             return false;
         }

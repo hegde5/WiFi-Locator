@@ -32,6 +32,7 @@ module.exports = function(app, model) {
     app.get("/api/user/:uid", findUserById);
     app.put("/api/user/:uid", loggedInAndSelf, updateUser);
     app.post("/api/user/:uid/favorites", addToFavorites);
+    app.get("/api/user/:uid/favorites", getCurrentUserFavorites);
     app.delete("/api/user/:uid", loggedInAndSelf, deleteUser);
 
     function loggedInAndSelf(req, res, next) {
@@ -213,6 +214,25 @@ module.exports = function(app, model) {
 
                 }
             );
+    }
+
+    function getCurrentUserFavorites(req, res) {
+        var userId = req.params.uid;
+
+        model
+            .userModel
+            .getFavorites(userId)
+            .then(
+                function (userObj) {
+                    res.send(userObj);
+                },
+                function (error) {
+                    var status = error.statusCode;
+                    res.sendStatus(status).send(error);
+                }
+            );
+
+
     }
 
 

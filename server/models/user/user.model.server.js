@@ -14,6 +14,7 @@ module.exports = function() {
         findUserById            : findUserById,
         updateUser              : updateUser,
         addToFavorites          : addToFavorites,
+        getFavorites            : getFavorites,
         deleteUser              : deleteUser
     };
     return api;
@@ -68,7 +69,10 @@ module.exports = function() {
                         {
                             userObj.favorites = [];
                         }
-                        userObj.favorites.push(placeId);
+
+                        if(userObj.favorites.indexOf(placeId) == -1)
+                            userObj.favorites.push(placeId);
+
                         return userObj.save();
                     })
             })
@@ -76,6 +80,13 @@ module.exports = function() {
 
     function deleteUser(userId) {
         return removeUser(userId);
+    }
+    
+    function getFavorites(userId) {
+        return UserModel
+            .findById({_id: userId})
+            .populate('favorites')
+            .exec();
     }
 
     function removeUser(userId) {

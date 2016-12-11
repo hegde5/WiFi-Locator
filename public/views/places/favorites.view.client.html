@@ -1,32 +1,29 @@
-<div class="carousel">
-    <a class="carousel-item" href="#one!">
-        <div class="card-panel">
-            <div class="card-title">Login</div>
-        </div>
+<wifi-loc8r-header></wifi-loc8r-header>
 
-    </a>
-    <a class="carousel-item" href="#two!">
-        <div class="card-panel">
-            <div class="card-title">Login</div>
-        </div>
+<div class="favs">
+    <div class="favBackground">
+    <ul ng-repeat=" favoritePlace in model.currentUserPlaces" class="collection pointer-cursor">
+        <li class="collection-item avatar fade-ul">
+            <a ng-href="#/place/{{favoritePlace.placeId}}" class="no-underline">
+                <img ng-src="{{favoritePlace.thumbnail}}" class="circle">
+                <div ng-if="favoritePlace.thumbnail == null">
+                    <img src="../../assets/cafe-office-laptop-01.jpg" class="circle">
+                </div>
+                <div class="title">
+                    <p class="fav-p"><b>{{favoritePlace.title}}</b> <i class="material-icons float-right">grade</i>
+                        <br>
+                        {{favoritePlace.address.street}}<br>
+                        {{favoritePlace.address.city}}, {{favoritePlace.address.postal}}
+                    </p>
+                </div>
+            </a>
 
-    </a>
-    <a class="carousel-item" href="#three!">
-        <div class="card-panel">
-            <div class="card-title">Login</div>
-        </div>
 
-    </a>
-    <a class="carousel-item" href="#four!">
-        <div class="card-panel">
-            <div class="card-title">Login</div>
-        </div>
-
-    </a>
-    <a class="carousel-item" href="#five!">
-        <div class="card-panel">
-            <div class="card-title">Login</div>
-        </div>
-
-    </a>
+        </li>
+    </ul>
+    </div>
 </div>
+
+
+
+<wifi-loc8r-footer></wifi-loc8r-footer>

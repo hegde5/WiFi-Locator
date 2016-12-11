@@ -63,7 +63,7 @@
             })
             .when("/favorites",{
                 templateUrl:"/views/places/favorites.view.client.html",
-                controller:"PlaceDetailController",
+                controller:"FavoritesController",
                 controllerAs:"model"
             })
             .otherwise({

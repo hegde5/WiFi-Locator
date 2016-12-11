@@ -16,6 +16,7 @@
             updateUser      : updateUser,
             deleteUser      : deleteUser,
             addToFavorites  : addToFavorites,
+            getCurrentUserFavorites : getCurrentUserFavorites,
             logout          : logout
         };
         return api;
@@ -62,6 +63,11 @@
         function addToFavorites(userId, place) {
             var url = "/api/user/" + userId +"/favorites";
             return $http.post(url, place);
+        }
+
+        function getCurrentUserFavorites(userId) {
+            var url = "/api/user/" + userId + "/favorites";
+            return $http.get(url);
         }
     }
 })();
