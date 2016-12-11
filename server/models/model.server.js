@@ -20,18 +20,21 @@ module.exports = function() {
     var reviewModel = require("./review/review.model.server")();
     var feedbackModel = require("./feedback/feedback.model.server")();
     var placeModel = require("./place/place.model.server")();
+    var commentModel = require("./comment/comment.model.server")();
 
     var model = {
         userModel: userModel,
         reviewModel: reviewModel,
         feedbackModel: feedbackModel,
-        placeModel: placeModel
+        placeModel: placeModel,
+        commentModel: commentModel
     };
    
     userModel.setModel(model);
     reviewModel.setModel(model);
     feedbackModel.setModel(model);
     placeModel.setModel(model);
+    commentModel.setModel(model);
 
     return model;
 };

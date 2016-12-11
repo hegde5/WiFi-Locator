@@ -30,7 +30,7 @@
                     <span class="collapsible-header-name">{{review.user.firstName}} {{review.user.lastName}}</span>
                     <div class="float-right">{{review.dateReviewed}}</div>
                 </div>
-                <div class="collapsible-body">
+                <div class="collapsible-body bottom-padding">
                     <div class="review-title">
                         <h5>
                             {{review.title}}
@@ -46,6 +46,26 @@
                         </h5>
                     </div>
                     <p>{{review.description}}</p>
+
+                    <div class="container" ng-controller="CommentController as model">
+                        <ul class="collection" ng-if="model.comments">
+                            <li class="collection-item avatar comment-list" ng-repeat="comment in model.comments">
+                                <img ng-src="../../assets/material-letters/{{comment.user.firstName[0].toUpperCase()}}.png">
+                                <span class="title">{{comment.user.firstName}} {{comment.user.lastName}}</span>
+                                <p>
+                                    {{comment.text}}
+                                </p>
+                            </li>
+
+                        </ul>
+                        <br>
+                        <input class="" type="text"
+                               ng-model="model.newComment.text" placeholder="Write your comment here">
+                        <button class="waves-effect waves-light btn float-right" ng-click="model.postComment();">
+                            Post
+                            <i class="material-icons vertical-align-middle">comment</i>
+                        </button>
+                    </div>
                 </div>
             </li>
         </ul>

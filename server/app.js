@@ -9,4 +9,5 @@ module.exports = function(app) {
     require("./services/review.service.server")(app, model);
     require("./services/feedback.service.server")(app, model);
     require("./services/place.service.server")(app, model);
+    require("./services/comment.service.server")(app, model);
 };

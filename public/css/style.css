@@ -95,6 +95,15 @@ a, a:visited, a:hover, a:active {
 }
 
 .collapsible-header img {
+    max-height: 35px;
+    width: auto
+}
+
+.comment-list {
+    padding-left: 20px !important;
+}
+
+.comment-list img {
     max-height: 30px;
     width: auto
 }
@@ -126,4 +135,12 @@ a, a:visited, a:hover, a:active {
 
 .modal-background {
     background-color: #dddddd;
+}
+
+.vertical-align-middle {
+    vertical-align: middle;
+}
+
+.bottom-padding {
+    padding-bottom: 20px;
 }
