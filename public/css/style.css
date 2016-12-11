@@ -47,6 +47,14 @@ a, a:visited, a:hover, a:active {
     padding-bottom: 0
 }
 
+.jumbotron-bottom-margin-less {
+    margin-bottom: 0;
+}
+
+.footer-margin-top-less {
+    margin-top: 0 !important;
+}
+
 .desc-paragraph {
     text-align: justify;
     font-style: italic;
