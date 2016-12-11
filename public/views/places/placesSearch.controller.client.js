@@ -20,7 +20,7 @@
 
         function openModal()
         {
-            $('.modal').modal();
+            $('#modal1').modal();
 
         }
 

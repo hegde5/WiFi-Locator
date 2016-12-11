@@ -72,7 +72,7 @@
                     }
                     else {
                         deferred.reject();
-                        $location.url("/login");
+                        $location.url("/loginRedirect");
                     }
                 });
             return deferred.promise;
