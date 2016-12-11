@@ -68,3 +68,12 @@ a, a:visited, a:hover, a:active {
     padding-right: 10px;
     padding-left: 10px;
 }
+
+.modal-padding {
+    padding-right: 7px;
+    padding-left: 15px;
+}
+
+.modal-background {
+    background-color: #dddddd;
+}

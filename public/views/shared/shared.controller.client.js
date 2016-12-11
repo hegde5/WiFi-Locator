@@ -19,6 +19,7 @@
                 }); // where idOfYourVideo is the YouTube ID.
 
         });
+        $('#myModal').modal();
     }
 
 })();

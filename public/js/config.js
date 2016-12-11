@@ -56,6 +56,11 @@
                     checkAdmin: checkAdmin
                 }
             })
+            .when("/loginRedirect",{
+                templateUrl:"/views/shared/loginRedirect.view.client.html",
+                controller:"SharedController",
+                controllerAs:"model"
+            })
             .otherwise({
                 redirectTo: "/"
             });
@@ -70,7 +75,7 @@
                     }
                     else {
                         deferred.reject();
-                        $location.url("/login");
+                        $location.url("/loginRedirect");
                     }
                 });
             return deferred.promise;
