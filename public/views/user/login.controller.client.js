@@ -10,6 +10,20 @@
         var vm = this;
         vm.login = login;
 
+        function init() {
+            UserService
+                .getCurrentUser()
+                .success(function(user) {
+                    if(user) {
+                        $location.url("/search");
+                    }
+                })
+                .error(function(err) {
+                    console.log("Login init error: "+err.stack);
+                });
+        }
+        init();
+
         function login() {
             vm.error = null;
             if(!vm.email || !vm.password) vm.error="Both Email and Password is required to login!";

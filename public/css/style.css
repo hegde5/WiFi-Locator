@@ -1,3 +1,14 @@
+/*for sticky footer*/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
 .logo-image {
     height: 48px;
     width: auto;
@@ -49,6 +60,10 @@ a, a:visited, a:hover, a:active {
 
 .jumbotron-bottom-margin-less {
     margin-bottom: 0;
+}
+
+.jumbotron-top-30 {
+    margin-top: 30px;
 }
 
 .footer-margin-top-less {

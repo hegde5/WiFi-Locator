@@ -14,8 +14,8 @@
             checkAdmin      : checkAdmin,
             getCurrentUser  : getCurrentUser,
             updateUser      : updateUser,
-            deleteUser      : deleteUser,,
-            addToFavorites : addToFavorites,
+            deleteUser      : deleteUser,
+            addToFavorites  : addToFavorites,
             logout          : logout
         };
         return api;

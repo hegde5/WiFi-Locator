@@ -1,8 +1,10 @@
+<wifi-loc8r-header></wifi-loc8r-header>
+
 <div class="container-fluid">
     <div class="alert alert-danger" ng-show="model.error" role="alert">
         {{model.error}}
     </div>
-    <div class="jumbotron jumbotron-bottom-less">
+    <div class="jumbotron jumbotron-bottom-less jumbotron-top-30">
         <!--TODO make this responsive: rearrange for mobile view-->
         <div class="row">
             <div class="col s4 m4">
@@ -29,13 +31,24 @@
                     <div class="col s4 m4">
                         <div class="fa fa-arrow-down">
                             <b>Download: </b>
-                            {{model.place.download+" Mbps" || "N/A"}}
+                            <span ng-if="model.place.download && model.place.download!==''">
+                                {{model.place.download}} Mbps
+                            </span>
+                            <span ng-if="!model.place.download || model.place.download===''">
+                                N/A
+                            </span>
+
                         </div>
                     </div>
                     <div class="col s4 m4">
                         <div class="fa fa-arrow-up">
                             <b>Upload: </b>
-                            {{model.place.upload+" Mbps" || "N/A"}}
+                            <span ng-if="model.place.upload && model.place.upload!==''">
+                                {{model.place.upload}} Mbps
+                            </span>
+                            <span ng-if="!model.place.upload || model.place.upload===''">
+                                N/A
+                            </span>
                         </div>
                     </div>
                     <div class="col s4 m4">
@@ -89,3 +102,5 @@
         <div ng-include="'views/reviews/reviews.view.client.html'"></div>
     </div>
 </div>
+
+<wifi-loc8r-footer></wifi-loc8r-footer>
