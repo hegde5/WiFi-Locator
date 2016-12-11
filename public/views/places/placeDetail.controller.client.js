@@ -92,7 +92,7 @@
 
         function checkFavorites() {
 
-            if(vm.currentPlace === '0')
+            if(vm.currentPlace && vm.currentPlace === '0')
             {
                 return false;
             }
