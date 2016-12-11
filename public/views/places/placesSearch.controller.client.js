@@ -35,7 +35,6 @@
 
         function search(filterObj) {
             vm.error=null;
-            console.log("filterObj: "+ JSON.stringify(filterObj));
 
             if(filterObj===undefined ||
                 (filterObj.name=="" && filterObj.zipcode=="") ||

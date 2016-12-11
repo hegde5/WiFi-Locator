@@ -8,7 +8,6 @@
 
     function SharedController() {
 
-        console.log("Hello from the controller");
         $().ready(function() {
             //FrzdLoI7w7A : HD Video
             //gGXejiDkFy0 : Family guy

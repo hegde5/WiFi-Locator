@@ -16,7 +16,6 @@
             else if(!vm.user || !vm.user.password) vm.error = "Enter a password";
             else if(!vm.user || (vm.user.password !== vm.user.confirmPassword)) vm.error = "Passwords don't match!";
             else {
-                console.log('ok...');
                 delete vm.user.confirmPassword;
                 UserService
                     .register(vm.user)

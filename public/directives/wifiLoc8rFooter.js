@@ -30,7 +30,6 @@
         var vm = this;
 
         function init() {
-            console.log("here: "+$location.path());
             vm.currentYear = (new Date).getFullYear();
             vm.showSubmitFeedback = !($location.path()=="/login" || $location.path()=="/register" || $location.path()=="/loginRedirect");
         }

@@ -54,8 +54,6 @@ module.exports = function() {
     }
 
     function addToFavorites(userId, place){
-
-        console.log("ADD");
         return model
             .placeModel
             .createPlace(place)
