@@ -1,4 +1,81 @@
 <wifi-loc8r-header></wifi-loc8r-header>
 
+<div class="row">
+    <div class="col s3">
+        <div class="section">
+            <img ng-src="../../assets/material-letters/{{model.user.firstName[0].toUpperCase()}}.png" width="50px">
+            <h5 style="float: right">{{model.user.firstName}} {{model.user.lastName}}</h5>
+            <p style="float: right"><b>Email:</b> {{model.user.email}}<br>
+                <b>Phone:</b> {{model.user.phone}}<br>
+                <b>Joined:</b> {{model.user.dateCreated}}<br>
+                <b>Followers:</b> {{model.followersLen}}
+            </p>
+        </div>
+        <br><br>
+    </div>
+    <br>
+    <div class="col s1">
+        <a class="btn-floating btn-small waves-effect waves-light red" style="float: right"><i class="material-icons">add</i></a>
+    </div>
+</div>
+<div class="divider"></div>
+
+<div class="row">
+
+    <div class="col s12 m6">
+        <div class="card favs">
+            <div class="card-content">
+                <span class="card-title white-text">Favorites</span>
+                <!--ng repeat over favorites here -->
+                <div class="favBackground">
+                    <ul ng-repeat=" favoritePlace in model.userFavorites" class="collection pointer-cursor">
+                        <li class="collection-item avatar fade-ul">
+                            <a ng-href="#/place/{{favoritePlace.placeId}}" class="no-underline">
+                                <img ng-src="{{favoritePlace.thumbnail}}" class="circle">
+                                <div ng-if="favoritePlace.thumbnail == null">
+                                    <img src="../../assets/cafe-office-laptop-01.jpg" class="circle">
+                                </div>
+                                <div class="title">
+                                    <p class="fav-p"><b>{{favoritePlace.title}}</b> <i class="material-icons float-right">grade</i>
+                                        <br>
+                                        {{favoritePlace.address.street}}<br>
+                                        {{favoritePlace.address.city}}, {{favoritePlace.address.postal}}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col s12 m6">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Followers</span>
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Reviews</span>
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
 
 <wifi-loc8r-footer></wifi-loc8r-footer>

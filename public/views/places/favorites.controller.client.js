@@ -12,7 +12,6 @@
 
         var vm = this;
         vm.init = init;
-        vm.setCarousel = setCarousel;
 
         function init() {
             UserService
@@ -23,9 +22,7 @@
                     UserService
                         .getCurrentUserFavorites(userId)
                         .success(function (userObj) {
-                            console.log("Banthu banthu");
                             vm.currentUserPlaces = userObj.favorites;
-                            console.dir(userObj);
                         })
                         .error(function (error) {
                             console.log(error.stack);
@@ -36,14 +33,6 @@
                 })
         }
         init();
-        setCarousel();
-
-
-        function setCarousel() {
-            $(document).ready(function () {
-                $('.carousel').carousel();
-            });
-        }
     }
 
 
