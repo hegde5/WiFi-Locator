@@ -144,3 +144,7 @@ a, a:visited, a:hover, a:active {
 .bottom-padding {
     padding-bottom: 20px;
 }
+
+.pointer-cursor {
+    cursor: pointer;
+}

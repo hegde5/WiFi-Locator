@@ -21,7 +21,7 @@ module.exports = function(app,model) {
     }
 
     function markHelpful(req, res) {
-        var userId = req.body;
+        var userId = req.body.userId;
         var reviewId = req.params.rid;
         model
             .reviewModel

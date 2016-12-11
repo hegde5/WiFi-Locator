@@ -29,8 +29,11 @@ module.exports = function() {
         return ReviewModel
             .findById(reviewId)
             .then(function(review) {
-                review.helpful.push(userId);
-                return review.save();
+                if(!review.helpful.contains(userId)) {
+                    review.helpful.push(userId);
+                    return review.save();
+                }
+                return review;
             })
     }
 

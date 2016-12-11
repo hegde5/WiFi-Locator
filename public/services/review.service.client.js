@@ -20,7 +20,7 @@
         }
 
         function markHelpful(reviewId,userId) {
-            return $http.put("/api/review/"+reviewId,userId);
+            return $http.put("/api/review/"+reviewId,{userId:userId});
         }
 
         function getReviewsForPlace(placeId) {

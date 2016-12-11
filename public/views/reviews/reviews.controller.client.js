@@ -6,11 +6,12 @@
         .module("WifiLoc8rApp")
         .controller("ReviewController", ReviewController);
 
-    function ReviewController($location, $routeParams, PlaceService, UserService, ReviewService) {
+    function ReviewController($routeParams, $scope, PlaceService, UserService, ReviewService) {
         var months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'];
         var vm=this;
         vm.submitReview = submitReview;
         vm.getAllReviews = getAllReviews;
+        vm.markHelpful = markHelpful;
 
         function init()
         {
@@ -18,6 +19,12 @@
                 $('.rating').addRating({fieldName:"reviewRating",fieldId:"reviewRating"});
                 $('.collapsible').collapsible();
             });
+            UserService
+                .getCurrentUser()
+                .success(function(user) {
+                    vm.user = user;
+                });
+
             getAllReviews();
         }
         init();
@@ -54,22 +61,31 @@
 
         function submitReview() {
             vm.reviewSubmission = null;
-            UserService
-                .getCurrentUser()
-                .success(function (user) {
-                    vm.newReview.user = user._id;
-                    vm.newReview.placeId = $routeParams.id;
-                    vm.newReview.rating = $('#reviewRating').val();
-                    ReviewService
-                        .createReview(vm.newReview)
-                        .success(function (review) {
-                            getAllReviews();
-                        });
+            vm.newReview.user = vm.user._id;
+            vm.newReview.placeId = $routeParams.id;
+            vm.newReview.rating = $('#reviewRating').val();
+            ReviewService
+                .createReview(vm.newReview)
+                .success(function (review) {
+                    getAllReviews();
                 })
                 .error(function (err) {
                     vm.reviewSubmission = err;
                 });
         }
 
+        function markHelpful(reviewId, usersMarkedHelpful) {
+            var userId = vm.user._id;
+            if(!usersMarkedHelpful.includes(userId)) {
+                ReviewService
+                    .markHelpful(reviewId,vm.user._id)
+                    .success(function(review) {
+                        getAllReviews();
+                    })
+                    .error(function(err) {
+                        console.log("markHelpful error: "+err);
+                    });
+            }
+        }
     }
 })();
