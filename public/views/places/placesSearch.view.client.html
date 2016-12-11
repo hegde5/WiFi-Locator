@@ -86,13 +86,15 @@
             <ul ng-repeat="eachPlace in model.resultSet" class="collection">
                 <li class="collection-item avatar">
                     <img ng-src="{{eachPlace.thumbnail_img}}" alt="thumb" class="circle">
-                    <div class="title">{{eachPlace.title}}</div>
-                    <div>
-                        {{eachPlace.street}}
-                        <br>
-                        {{eachPlace.city}}
-                    </div>
-                    <a href="#/place/{{eachPlace.ID}}" class="secondary-content"><i class="material-icons">keyboard_arrow_right</i></a>
+                    <a href="#/place/{{eachPlace.ID}}" class="no-underline">
+                        <div class="title">{{eachPlace.title}}</div>
+                        <div>
+                            {{eachPlace.street}}
+                            <br>
+                            {{eachPlace.city}}
+                        </div>
+                        <i class="material-icons secondary-content">keyboard_arrow_right</i>
+                    </a>
                 </li>
             </ul>
         </div>
