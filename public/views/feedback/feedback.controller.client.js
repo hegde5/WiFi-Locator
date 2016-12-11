@@ -11,9 +11,6 @@
         var vm = this;
         vm.init = init;
         vm.submitFeedback = submitFeedback;
-        vm.getAllFeedback = getAllFeedback;
-        vm.deleteFeedback = deleteFeedback;
-
 
         function init() {
             UserService
@@ -42,9 +39,6 @@
 
         }
 
-        function deleteFeedback() {
-            
-        }
     }
 
 
