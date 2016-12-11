@@ -11,8 +11,8 @@ module.exports = function() {
         password: String,
         address: {zipcode:String, city: String},
         dateCreated: {type:Date, default: Date.now},
-        followers : [{type:mongoose.Schema.Types.ObjectId, ref:"user"}],
-        favorites: [{type:mongoose.Schema.Types.ObjectId, ref:"place"}]
+        followers : [{type:mongoose.Schema.Types.ObjectId, ref:"UserModel"}],
+        favorites: [{type:mongoose.Schema.Types.ObjectId, ref:"PlaceModel"}]
     },{collection: "user"});
 
     return UserSchema;

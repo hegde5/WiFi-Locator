@@ -8,4 +8,5 @@ module.exports = function(app) {
     require("./services/user.service.server")(app, model);
     require("./services/review.service.server")(app, model);
     require("./services/feedback.service.server")(app, model);
+    require("./services/place.service.server")(app, model);
 };

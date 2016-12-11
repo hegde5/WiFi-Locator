@@ -58,6 +58,11 @@
                 controller:"SharedController",
                 controllerAs:"model"
             })
+            .when("/favorites",{
+                templateUrl:"/views/places/favorites.view.client.html",
+                controller:"PlaceDetailController",
+                controllerAs:"model"
+            })
             .otherwise({
                 redirectTo: "/"
             });

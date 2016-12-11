@@ -17,7 +17,6 @@
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
 
-
         function openModal()
         {
             $('#modal1').modal();
@@ -33,7 +32,15 @@
                 .getCurrentUser()
                 .success(function (user) {
                     vm.user = user;
-                })
+                });
+
+            // $.get("http://ipinfo.io", function(response) {
+            //     //console.log(response.ip, response.country, response.loc);
+            //     var loc = response.loc;
+            //     var locArray = loc.split(",");
+            //     vm.lat = locArray[0];
+            //     vm.long = locArray[1];
+            // }, "jsonp")
         }
         init();
 
@@ -51,10 +58,10 @@
             }
             else
             {
-                if(filterObj.zipcode !== undefined && filterObj.zipcode!="")
+                if(filterObj.selected === "zipcode")
                 {
                     $(".preloader-wrapper").show();
-                    var zipcode = filterObj.zipcode;
+                    var zipcode = filterObj.text;
                     PlaceService
                         .searchPlacesByZipcode(zipcode)
                         .success(function (result) {
@@ -66,13 +73,12 @@
                             console.log(error.stack);
                         })
                 }
-                else if(filterObj.parameters && filterObj.parameters.radius !== undefined)
+                else if(filterObj.selected === "location")
                 {
                     $(".preloader-wrapper").show();
-                    var radius = filterObj.parameters.radius;
-                    console.dir(filterObj);
-                    /*PlaceService
-                        .searchPlacesByLocation(radius)
+                    var radius = filterObj.text;
+                    PlaceService
+                        .searchPlacesByLocation(vm.lat,vm.long,radius)
                         .success(function (result) {
                             $(".preloader-wrapper").hide();
                             vm.resultSet = result.response;
@@ -80,12 +86,12 @@
                         })
                         .error(function (error) {
                             console.log(error.stack);
-                        });*/
+                        });
                 }
-                if(filterObj.name !== undefined && filterObj.name!="")
+                else if(filterObj.selected === "name")
                 {
                     $(".preloader-wrapper").show();
-                    var name = filterObj.name;
+                    var name = filterObj.text;
                     PlaceService
                         .searchPlacesByName(name)
                         .success(function (result) {

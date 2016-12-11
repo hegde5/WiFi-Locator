@@ -30,6 +30,7 @@ module.exports = function(app, model) {
     app.get("/api/user", findUser);
     app.get("/api/user/:uid", findUserById);
     app.put("/api/user/:uid", updateUser);
+    app.post("/api/user/:uid/favorites", addToFavorites);
     app.delete("/api/user/:uid", deleteUser);
 
 
@@ -174,6 +175,25 @@ module.exports = function(app, model) {
                 },
                 function(error) {
                     res.sendStatus(400).send(error);
+                }
+            );
+    }
+
+    function addToFavorites(req, res) {
+        var place = req.body;
+        var userId = req.params.uid;
+
+        model
+            .userModel
+            .addToFavorites(userId, place)
+            .then(
+                function (userObj) {
+                    res.send(userObj);
+                },
+                function (error) {
+                    console.log(error.stack);
+                    res.sendStatus(400).send(error);
+
                 }
             );
     }

@@ -15,7 +15,9 @@
             searchPlacesByZipcode: searchPlacesByZipcode,
             searchPlacesByLocation: searchPlacesByLocation,
             searchPlacesByName: searchPlacesByName,
-            getPlace: getPlace
+            getPlace: getPlace,
+            getPlaceByPlaceId : getPlaceByPlaceId
+
         };
         return api;
 
@@ -28,7 +30,7 @@
             });
         }
 
-        function searchPlacesByLocation(radius)
+        function searchPlacesByLocation(latitude,longitude,radius)
         {
             return $http({
                 method: 'GET',
@@ -53,6 +55,11 @@
                 url: 'http://api.workfrom.co/places/'+id+
                 "?" + "appid="+appid + "&dow="+(new Date()).getDay()
             });
+        }
+
+        function getPlaceByPlaceId(placeId) {
+            var url = "/api/place/" + placeId;
+            return $http.get(url);
         }
 
     }

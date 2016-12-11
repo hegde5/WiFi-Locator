@@ -13,6 +13,7 @@ module.exports = function() {
         findUserByEmail         : findUserByEmail,
         findUserById            : findUserById,
         updateUser              : updateUser,
+        addToFavorites          : addToFavorites,
         deleteUser              : deleteUser
     };
     return api;
@@ -50,6 +51,29 @@ module.exports = function() {
                     address: user.address
                 }
             );
+    }
+
+    function addToFavorites(userId, place){
+
+        console.log("ADD");
+        return model
+            .placeModel
+            .createPlace(place)
+            .then(function (placeObj) {
+                var placeId = placeObj._id;
+                return UserModel
+                    .findOne({
+                        _id: userId
+                    })
+                    .then(function (userObj) {
+                        if(!userObj.favorites)
+                        {
+                            userObj.favorites = [];
+                        }
+                        userObj.favorites.push(placeId);
+                        return userObj.save();
+                    })
+            })
     }
 
     function deleteUser(userId) {

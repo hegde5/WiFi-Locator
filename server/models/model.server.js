@@ -19,16 +19,19 @@ module.exports = function() {
     var userModel = require("./user/user.model.server")();
     var reviewModel = require("./review/review.model.server")();
     var feedbackModel = require("./feedback/feedback.model.server")();
+    var placeModel = require("./place/place.model.server")();
 
     var model = {
         userModel: userModel,
         reviewModel: reviewModel,
-        feedbackModel: feedbackModel
+        feedbackModel: feedbackModel,
+        placeModel: placeModel
     };
    
     userModel.setModel(model);
     reviewModel.setModel(model);
     feedbackModel.setModel(model);
+    placeModel.setModel(model);
 
     return model;
 };

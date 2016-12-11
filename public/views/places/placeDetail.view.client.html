@@ -15,7 +15,10 @@
                 <p class="desc-paragraph">{{model.place.description}}</p>
                 Type: {{model.place.type}}
                 <br><br>
-                <div class="fa fa-star-o"> Favorite</div>
+                <div class="fa fa-star-o" ng-if="model.favStatus==0">
+                    <a class="no-underline" ng-click="model.addToFavorites()">Favorite</a></div>
+                <div class="fa fa-star" ng-if="model.favStatus==1">
+                    <a class="no-underline">Favorite</a></div>
             </div>
         </div>
 
