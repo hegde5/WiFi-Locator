@@ -33,6 +33,9 @@ module.exports = function(app, model) {
     app.put("/api/user/:uid", loggedInAndSelf, updateUser);
     app.post("/api/user/:uid/favorites", addToFavorites);
     app.get("/api/user/:uid/favorites", getCurrentUserFavorites);
+    app.put("/api/user/:uid/following", addToFollowing);
+    app.get("/api/user/:uid/following", getFollowing);
+    app.get("/api/user/:uid/followers", getFollowers);
     app.delete("/api/user/:uid", loggedInAndSelf, deleteUser);
 
     function loggedInAndSelf(req, res, next) {
@@ -233,6 +236,58 @@ module.exports = function(app, model) {
             );
 
 
+    }
+
+    function addToFollowing(req, res) {
+        var userId = req.params.uid;
+        var followingUserId = req.body.followingUserId;
+
+        model
+            .userModel
+            .addToFollowing(userId, followingUserId)
+            .then(
+                function(userObj) {
+                    res.send(userObj);
+                },
+                function(error) {
+                    var status = error.statusCode;
+                    res.sendStatus(status).send(error);
+                }
+            );
+    }
+
+    function getFollowers(req, res) {
+        var userId = req.params.uid;
+
+        model
+            .userModel
+            .getFollowers(userId)
+            .then(
+                function(followers) {
+                    res.send(followers);
+                },
+                function(error) {
+                    var status = error.statusCode;
+                    res.sendStatus(status).send(error);
+                }
+            );
+    }
+
+    function getFollowing(req, res) {
+        var userId = req.params.uid;
+
+        model
+            .userModel
+            .getFollowing(userId)
+            .then(
+                function(followers) {
+                    res.send(followers);
+                },
+                function(error) {
+                    var status = error.statusCode;
+                    res.sendStatus(status).send(error);
+                }
+            );
     }
 
 

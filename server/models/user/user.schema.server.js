@@ -13,6 +13,7 @@ module.exports = function() {
         role: {type: String, enum: ['ADMIN', 'USER'], default: 'USER'},
         dateCreated: {type:Date, default: Date.now},
         followers : [{type:mongoose.Schema.Types.ObjectId, ref:"UserModel"}],
+        following : [{type:mongoose.Schema.Types.ObjectId, ref:"UserModel"}],
         favorites: [{type:mongoose.Schema.Types.ObjectId, ref:"PlaceModel"}]
     },{collection: "user"});
 

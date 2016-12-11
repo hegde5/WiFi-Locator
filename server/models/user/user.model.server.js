@@ -15,6 +15,9 @@ module.exports = function() {
         updateUser              : updateUser,
         addToFavorites          : addToFavorites,
         getFavorites            : getFavorites,
+        addToFollowing          : addToFollowing,
+        getFollowers            : getFollowers,
+        getFollowing            : getFollowing,
         deleteUser              : deleteUser
     };
     return api;
@@ -78,15 +81,56 @@ module.exports = function() {
             })
     }
 
-    function deleteUser(userId) {
-        return removeUser(userId);
-    }
-    
     function getFavorites(userId) {
         return UserModel
             .findById({_id: userId})
             .populate('favorites')
             .exec();
+    }
+
+    function addToFollowing(userId, followingUserId) {
+        return UserModel
+            .findById(followingUserId)
+            .then(function(userObj) {
+                if(!userObj.followers) {
+                    userObj.followers = [];
+                }
+                if(userObj.followers.indexOf(userId)==-1){
+                    userObj.followers.push(userId);
+                    return userObj.save();
+                }
+                return userObj;
+            })
+            .then(function(user) {
+                return UserModel
+                    .findById(userId)
+                    .then(function(userObj) {
+                        if(!userObj.following) {
+                            userObj.following = [];
+                        }
+                        if(userObj.following.indexOf(followingUserId)==-1){
+                            userObj.following.push(followingUserId);
+                            return userObj.save();
+                        }
+                        return userObj;
+                    })
+            });
+    }
+
+    function getFollowers(userId) {
+        return UserModel
+            .findById(userId)
+            .populate('followers');
+    }
+
+    function getFollowing(userId) {
+        return UserModel
+            .findById(userId)
+            .populate('following');
+    }
+
+    function deleteUser(userId) {
+        return removeUser(userId);
     }
 
     function removeUser(userId) {

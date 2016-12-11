@@ -17,7 +17,10 @@
             deleteUser      : deleteUser,
             addToFavorites  : addToFavorites,
             getCurrentUserFavorites : getCurrentUserFavorites,
-            logout          : logout
+            logout          : logout,
+            addToFollowing  : addToFollowing,
+            getFollowers    : getFollowers,
+            getFollowing    : getFollowing
         };
         return api;
 
@@ -68,6 +71,18 @@
         function getCurrentUserFavorites(userId) {
             var url = "/api/user/" + userId + "/favorites";
             return $http.get(url);
+        }
+
+        function addToFollowing(userId, followingUserId) {
+            return $http.put("/api/user/"+userId+"/following", {followingUserId:followingUserId});
+        }
+
+        function getFollowers(userId) {
+            return $http.get("/api/user/"+userId+"/followers");
+        }
+
+        function getFollowing(userId) {
+            return $http.get("/api/user/"+userId+"/following");
         }
     }
 })();
