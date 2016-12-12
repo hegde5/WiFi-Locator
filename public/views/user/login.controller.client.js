@@ -14,6 +14,7 @@
         function init() {
             $("#tubular-container").remove();
             $("#tubular-shield").css("z-index","0");
+            $(".button-collapse").sideNav();
             UserService
                 .getCurrentUser()
                 .success(function(user) {

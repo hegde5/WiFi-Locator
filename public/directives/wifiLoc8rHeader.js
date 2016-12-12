@@ -33,10 +33,12 @@
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
 
+        $(document).ready(function() {
+            $(".button-collapse").sideNav();
+        });
         function openModal()
         {
             $('#modal1').modal();
-
         }
 
         function init()

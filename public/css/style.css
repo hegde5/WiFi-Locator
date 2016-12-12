@@ -230,7 +230,8 @@ a, a:visited, a:hover, a:active {
 
 .glass-background {
     background-color: rgba(0,0,0,0.4) !important;
-    height:315px;
+    margin-bottom: 0px;
+    padding-bottom: 20px;
 }
 
 .title-font {

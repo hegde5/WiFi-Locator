@@ -9,30 +9,30 @@
             <div class="row">
                 <!--search filters-->
                 <form name="searchForm">
-                    <div class="col s4 m4">
+                    <div class="col s12 m4">
                         <!--search based on zipcode-->
                         <div class="input-field">
-                            <i class="material-icons prefix">search</i>
                             <input id="search_icon1" type="radio" ng-model="model.filters.selected" name="group1" value="zipcode" class="validate">
-                            <label for="search_icon1">Search based on Zipcode</label>
+                            <label for="search_icon1">based on Zipcode</label>
+                            <i class="material-icons prefix">search</i>
                         </div>
                     </div>
 
-                    <div class="col s4 m4">
+                    <div class="col s12 m4">
                         <!--search based on location-->
                         <div class="input-field">
-                            <i class="material-icons prefix">my_location</i>
                             <input id="search_icon2" type="radio" ng-model="model.filters.selected" name="group1" value="location" class="validate">
-                            <label for="search_icon2">Search based on Current Location & Radius (in miles)</label>
+                            <label for="search_icon2">based on location & Radius(in miles)</label>
+                            <i class="material-icons prefix">my_location</i>
                         </div>
                     </div>
 
-                    <div class="col s4 m4">
+                    <div class="col s12 m4">
                         <!--search based on name-->
                         <div class="input-field">
-                            <i class="material-icons prefix">shopping_basket</i>
                             <input id="search_icon3" type="radio" ng-model="model.filters.selected" name="group1" value="name" class="validate">
-                            <label for="search_icon3">Search based on Place Name</label>
+                            <label for="search_icon3">based on Place Name</label>
+                            <i class="material-icons prefix">shopping_basket</i>
                         </div>
                     </div>
                 </form>
@@ -40,14 +40,14 @@
 
             <div class="row">
                 <br>
-                <div class="col s4 m4"></div>
-                <div class="col s4 m4">
+                <div class="col s2 m4"></div>
+                <div class="col s8 m4">
                     <div class="input-field">
                         <input id="search_icon4" type="text" ng-model="model.filters.text" name="name" class="validate">
                         <label for="search_icon4">Enter Value Here</label>
                     </div>
                 </div>
-                <div class="col s4 m4"></div>
+                <div class="col s2 m4"></div>
             </div>
 
             <div class="row">
