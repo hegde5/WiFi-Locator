@@ -15,7 +15,7 @@
             <p style="float: right"><b>Email:</b> {{model.user.email}}<br>
                 <b>Phone:</b> {{model.user.phone}}<br>
                 <b>Joined:</b> {{model.user.dateCreated}}<br>
-                <b>Followers:</b> {{model.followersLen}}
+                <b>Followers:</b> {{model.user.followers.length}}
             </p>
         </div>
         <br><br>
@@ -68,7 +68,7 @@
                 <div class="favBackground">
                     <ul ng-repeat=" follower in model.followers" class="collection pointer-cursor">
                         <li class="collection-item avatar fade-ul">
-                            <a ng-href="#/place/{{favoritePlace.placeId}}" class="no-underline">
+                            <a ng-href="#/user/{{follower._id}}" class="no-underline">
                                 <img ng-src="../../assets/material-letters/{{follower.firstName[0].toUpperCase()}}.png" class="circle">
                                 <div class="title">
                                     <p class="fav-p"><b>{{follower.firstName}} {{follower.lastName}}</b>
@@ -88,53 +88,39 @@
 
 <div class="row">
     <div class="col s12">
-        <div class="card">
+        <div class="card reviews">
             <div class="card-content">
                 <span class="card-title">Reviews</span>
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
-<div class="jumbotron review-jumbotron">
-    <ul class="collapsible popout" data-collapsible="accordion">
-        <li ng-repeat="review in model.reviews">
-            <div class="collapsible-header">
-                <img ng-src="../../assets/material-letters/{{review.place.title[0].toUpperCase()}}.png">
-                <a href="#/user/{{review.place.placeId}}" class="collapsible-header-name">{{review.place.title}}</a>
-                <div class="float-right">{{review.place.address}}</div>
-            </div>
-            <div class="collapsible-body bottom-padding">
-                <div class="review-title">
-                    <h5>
-                        {{review.title}}
-                            <span class="float-right"><i class="material-icons">star</i>
-                            <span ng-if="review.rating>1"><i class="material-icons">star</i></span>
-                            <span ng-if="review.rating<=1"><i class="material-icons">star_border</i></span>
-                            <span ng-if="review.rating>2"><i class="material-icons">star</i></span>
-                            <span ng-if="review.rating<=2"><i class="material-icons">star_border</i></span>
-                            <span ng-if="review.rating>3"><i class="material-icons">star</i></span>
-                            <span ng-if="review.rating<=3"><i class="material-icons">star_border</i></span>
-                            <span ng-if="review.rating>4"><i class="material-icons">star</i></span>
-                            <span ng-if="review.rating<=4"><i class="material-icons">star_border</i></span></span>
-                    </h5>
-                </div>
-                <p>
-                    {{review.description}}
-                    <br><br>
+                <ul class="collapsible popout" data-collapsible="accordion">
+                    <li ng-repeat="review in model.reviews">
+                        <div class="collapsible-header">
+                            <img ng-src="{{review.place.thumbnail}}">
+                            <a href="#/place/{{review.place.placeId}}" class="collapsible-header-name">{{review.place.title}}</a>
+                            <div class="float-right">{{review.place.address.street}}, {{review.place.address.city}} {{review.place.address.postal}}</div>
+                        </div>
+                        <div class="collapsible-body bottom-padding white-background">
+                            <div class="review-title">
+                                <br>
+                                <h5>
+                                    {{review.title}}
+                                    <show-as-rating class="float-right" rating="review.rating"></show-as-rating>
+                                </h5>
+                            </div>
+                            <p>
+                                {{review.description}}
+                                <br><br>
                     <span>
                         {{review.helpful.length}}
                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                         Helpful?
                     </span>
-                </p>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>
 
 <wifi-loc8r-footer></wifi-loc8r-footer>

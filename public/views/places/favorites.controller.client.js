@@ -20,7 +20,7 @@
                     console.dir(user);
                     var userId = user._id;
                     UserService
-                        .getCurrentUserFavorites(userId)
+                        .getFavoritesForUser(userId)
                         .success(function (userObj) {
                             vm.currentUserPlaces = userObj.favorites;
                         })

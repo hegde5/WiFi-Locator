@@ -8,20 +8,20 @@
 
     function UserService($http) {
         var api = {
-            register        : register,
-            login           : login,
-            findUserById    : findUserById,
-            checkLoggedIn   : checkLoggedIn,
-            checkAdmin      : checkAdmin,
-            getCurrentUser  : getCurrentUser,
-            updateUser      : updateUser,
-            deleteUser      : deleteUser,
-            addToFavorites  : addToFavorites,
-            getCurrentUserFavorites : getCurrentUserFavorites,
-            logout          : logout,
-            addToFollowing  : addToFollowing,
-            getFollowers    : getFollowers,
-            getFollowing    : getFollowing
+            register            : register,
+            login               : login,
+            findUserById        : findUserById,
+            checkLoggedIn       : checkLoggedIn,
+            checkAdmin          : checkAdmin,
+            getCurrentUser      : getCurrentUser,
+            updateUser          : updateUser,
+            deleteUser          : deleteUser,
+            addToFavorites      : addToFavorites,
+            getFavoritesForUser : getFavoritesForUser,
+            logout              : logout,
+            addToFollowing      : addToFollowing,
+            getFollowers        : getFollowers,
+            getFollowing        : getFollowing
         };
         return api;
 
@@ -69,12 +69,11 @@
             return $http.post(url, place);
         }
 
-        function getCurrentUserFavorites(userId) {
+        function getFavoritesForUser(userId) {
             var url = "/api/user/" + userId + "/favorites";
             return $http.get(url);
         }
 
-        //follpwingUSerId: params, userId: session
         function addToFollowing(userId, followingUserId) {
             return $http.put("/api/user/"+userId+"/following", {followingUserId:followingUserId});
         }

@@ -19,7 +19,9 @@
         function init() {
             $(document).ready(function(){
                 $('.collapsible').collapsible();
+                $('.modal').modal();
             });
+            getCurrentSessionUser();
             UserService
                 .findUserById(userId)
                 .success(function (userObj) {
@@ -28,27 +30,23 @@
                     var d = new Date(vm.user.dateCreated);
                     vm.user.dateCreated = months[d.getMonth()]+"-"
                         +d.getDate()+", "+ d.getFullYear();
-                    vm.followersLen = vm.user.followers.length;
 
+                    getFavoritesForUser();
+                    getFollowers();
+                    getAllReviewsForUser();
                 })
                 .error(function (error) {
                     console.log(error.stack);
                 });
 
-            getCurrentSessionUser();
         }
         init();
-        getFavoritesForUser();
-        getFollowers();
 
         function getFavoritesForUser() {
-
-            var userId = $routeParams.uid;
             UserService
-                .getCurrentUserFavorites(userId)
+                .getFavoritesForUser(userId)
                 .success(function (userObj) {
                     vm.userFavorites = userObj.favorites;
-                    console.dir(vm.userFavorites);
                 })
                 .error(function (error) {
                     console.log(error.stack);
@@ -60,8 +58,6 @@
                 .getCurrentUser()
                 .success(function (userObj) {
                     vm.sessionUser = userObj;
-                    console.log("Session user");
-                    console.log(vm.sessionUser);
                 })
                 .error(function (error) {
                     console.log(error.stack);
@@ -73,15 +69,11 @@
             UserService
                 .addToFollowing(vm.sessionUser._id, userId)
                 .success(function (userObj) {
-                    openModal();
+                    vm.user=userObj;
                 })
                 .error(function (error) {
                     console.log(error.stack);
                 })
-        }
-
-        function openModal() {
-            $('.modal').modal();
         }
         
         function getFollowers() {
@@ -89,7 +81,6 @@
                 .getFollowers(userId)
                 .success(function (userObj) {
                     vm.followers = userObj.followers;
-                    console.dir(vm.followers);
                 })
                 .error(function (error) {
                     console.log(error.stack);
@@ -99,7 +90,7 @@
 
         function getAllReviewsForUser() {
             ReviewService
-                .getReviewsForUser(vm.sessionUser._id)
+                .getReviewsForUser(userId)
                 .success(function(reviews) {
                     vm.reviews = reviews;
                 })

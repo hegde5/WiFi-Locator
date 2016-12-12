@@ -34,15 +34,7 @@
                     <div class="review-title">
                         <h5>
                             {{review.title}}
-                            <span class="float-right"><i class="material-icons">star</i>
-                            <span ng-if="review.rating>1"><i class="material-icons">star</i></span>
-                            <span ng-if="review.rating<=1"><i class="material-icons">star_border</i></span>
-                            <span ng-if="review.rating>2"><i class="material-icons">star</i></span>
-                            <span ng-if="review.rating<=2"><i class="material-icons">star_border</i></span>
-                            <span ng-if="review.rating>3"><i class="material-icons">star</i></span>
-                            <span ng-if="review.rating<=3"><i class="material-icons">star_border</i></span>
-                            <span ng-if="review.rating>4"><i class="material-icons">star</i></span>
-                            <span ng-if="review.rating<=4"><i class="material-icons">star_border</i></span></span>
+                            <show-as-rating class="float-right" rating="review.rating"></show-as-rating>
                         </h5>
                     </div>
                     <p>

@@ -32,7 +32,7 @@ module.exports = function(app, model) {
     app.get("/api/user/:uid", findUserById);
     app.put("/api/user/:uid", loggedInAndSelf, updateUser);
     app.post("/api/user/:uid/favorites", addToFavorites);
-    app.get("/api/user/:uid/favorites", getCurrentUserFavorites);
+    app.get("/api/user/:uid/favorites", getFavoritesForUser);
     app.put("/api/user/:uid/following", addToFollowing);
     app.get("/api/user/:uid/following", getFollowing);
     app.get("/api/user/:uid/followers", getFollowers);
@@ -219,12 +219,12 @@ module.exports = function(app, model) {
             );
     }
 
-    function getCurrentUserFavorites(req, res) {
+    function getFavoritesForUser(req, res) {
         var userId = req.params.uid;
 
         model
             .userModel
-            .getFavorites(userId)
+            .getFavoritesForUser(userId)
             .then(
                 function (userObj) {
                     res.send(userObj);

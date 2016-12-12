@@ -14,7 +14,7 @@ module.exports = function() {
         findUserById            : findUserById,
         updateUser              : updateUser,
         addToFavorites          : addToFavorites,
-        getFavorites            : getFavorites,
+        getFavoritesForUser     : getFavoritesForUser,
         addToFollowing          : addToFollowing,
         getFollowers            : getFollowers,
         getFollowing            : getFollowing,
@@ -81,7 +81,7 @@ module.exports = function() {
             })
     }
 
-    function getFavorites(userId) {
+    function getFavoritesForUser(userId) {
         return UserModel
             .findById({_id: userId})
             .populate('favorites')

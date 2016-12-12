@@ -166,6 +166,11 @@ a, a:visited, a:hover, a:active {
 
 }
 
+.reviews {
+    background-image: url("../assets/reviews.jpg");
+    background-size: cover;
+}
+
 .fade-ul {
     /*background-color: rgba(0, 0, 0, 0.5) !important;*/
     background-color: transparent !important;
@@ -185,5 +190,9 @@ a, a:visited, a:hover, a:active {
     color:white;
     background-color: transparent;
     box-shadow: none !important;
+}
+
+.white-background {
+    background-color: white;
 }
 
