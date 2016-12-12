@@ -12,6 +12,7 @@
 
         var appid = "bx6tusceypwTt4KP";
         var api = {
+            savePlace: savePlace,
             searchPlacesByZipcode: searchPlacesByZipcode,
             searchPlacesByLocation: searchPlacesByLocation,
             searchPlacesByName: searchPlacesByName,
@@ -20,6 +21,10 @@
 
         };
         return api;
+
+        function savePlace(place) {
+            return $http.post("/api/place",place);
+        }
 
         function searchPlacesByZipcode(zipcode)
         {

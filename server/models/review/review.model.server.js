@@ -39,12 +39,13 @@ module.exports = function() {
 
     function getReviewsForPlace(placeId) {
         return ReviewModel
-            .find({placeId: placeId})
+            .find({place: placeId})
             .populate('user','firstName lastName');
     }
 
     function getReviewsForUser(userId) {
         return ReviewModel
-            .find({user: userId});
+            .find({user: userId})
+            .populate('place');
     }
 };

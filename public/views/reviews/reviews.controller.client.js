@@ -24,35 +24,35 @@
                 .success(function(user) {
                     vm.user = user;
                 });
-
-            getAllReviews();
+            PlaceService
+                .getPlace($routeParams.id)
+                .success(function(result) {
+                    if(result.response.length>0) {
+                        vm.place=result.response[0];
+                        getAllReviews();
+                    }
+                    else vm.error="Could not fetch details from workfrom.co";
+                })
+                .error(function(error) {
+                    console.log(error.stack);
+                });
         }
         init();
 
         function getAllReviews() {
             vm.error=null;
-            var placeId = $routeParams.id;
             PlaceService
-                .getPlace(placeId)
-                .success(function(result) {
-                    if(result.response.length>0) {
-                        vm.place=result.response[0];
+                .getPlaceByPlaceId(vm.place.ID)
+                .success(function(place) {
+                    if(place) {
                         ReviewService
-                            .getReviewsForPlace(vm.place.ID)
-                            .success(function(reviews) {
-                                for(var r in reviews) {
-                                    var d = new Date(reviews[r].dateReviewed);
-                                    reviews[r].dateReviewed = months[d.getMonth()]+"-"
-                                        +d.getDate()+", "+ d.getFullYear();
-                                }
-                                vm.reviews = reviews;
-                            })
-                            .error(function(err) {
-                                vm.error = "Could not fetch Reviews";
-                                console.log(err);
-                            })
+                            .getReviewsForPlace(place._id)
+                            .then(function(reviews) {
+                                /*TODO figure out why the response is structured like this
+                                *  - maybe because of nesting these calls?*/
+                                vm.reviews = reviews.data;
+                            });
                     }
-                    else vm.error="Something went wrong";
                 })
                 .error(function(error) {
                     console.log(error.stack);
@@ -60,17 +60,31 @@
         }
 
         function submitReview() {
-            vm.reviewSubmission = null;
-            vm.newReview.user = vm.user._id;
-            vm.newReview.placeId = $routeParams.id;
-            vm.newReview.rating = $('#reviewRating').val();
-            ReviewService
-                .createReview(vm.newReview)
-                .success(function (review) {
-                    getAllReviews();
+            var place = {
+                placeId: vm.place.ID,
+                placeSlug: vm.place.slug,
+                address: {
+                    street: vm.place.street,
+                    city: vm.place.city,
+                    postal: vm.place.postal
+                },
+                title: vm.place.title,
+                thumbnail: vm.place.thumbnail_img
+            };
+            PlaceService
+                .savePlace(place)
+                .success(function(place) {
+                    vm.newReview.user = vm.user._id;
+                    vm.newReview.place = place._id;
+                    vm.newReview.rating = $('#reviewRating').val();
+                    ReviewService
+                        .createReview(vm.newReview)
+                        .success(function (review) {
+                            getAllReviews();
+                        })
                 })
                 .error(function (err) {
-                    vm.reviewSubmission = err;
+                    console.log("Review Submission error: "+err);
                 });
         }
 

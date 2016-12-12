@@ -4,7 +4,7 @@
 module.exports = function() {
     var mongoose = require('mongoose');
     var ReviewSchema = mongoose.Schema({
-        placeId: String,
+        place: {type: mongoose.Schema.Types.ObjectId, ref:"PlaceModel"},
         user: {type: mongoose.Schema.Types.ObjectId, ref:"UserModel"},
         title: String,
         description: String,

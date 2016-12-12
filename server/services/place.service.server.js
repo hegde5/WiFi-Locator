@@ -4,23 +4,33 @@
 
 module.exports = function(app, model) {
 
-    app.get("/api/place/:pid", getPlaceById);
-    
-    function getPlaceById(req, res) {
+    app.post("/api/place", savePlace);
+    app.get("/api/place/:pid", getPlaceByPlaceId);
+
+    function savePlace(req, res) {
+        var place = req.body;
+        model
+            .placeModel
+            .createPlace(place)
+            .then(
+                function(place) {
+                    res.send(place);
+                },
+                function(error) {
+                    var status = error.statusCode;
+                    res.sendStatus(status).send(error);
+                }
+            );
+    }
+
+    function getPlaceByPlaceId(req, res) {
         var placeId = req.params.pid;
 
         model
             .placeModel
             .getPlaceByPlaceId(placeId)
             .then(function (placeObj) {
-                if(placeObj)
-                {
-                    res.send(placeObj);
-                }
-                else
-                {
-                    res.send('0');
-                }
+                res.send(placeObj);
             },
             function (error) {
                 res.sendStatus(400).send(error);
