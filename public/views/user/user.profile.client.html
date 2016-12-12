@@ -100,6 +100,41 @@
 
 </div>
 
-
+<div class="jumbotron review-jumbotron">
+    <ul class="collapsible popout" data-collapsible="accordion">
+        <li ng-repeat="review in model.reviews">
+            <div class="collapsible-header">
+                <img ng-src="../../assets/material-letters/{{review.place.title[0].toUpperCase()}}.png">
+                <a href="#/user/{{review.place.placeId}}" class="collapsible-header-name">{{review.place.title}}</a>
+                <div class="float-right">{{review.place.address}}</div>
+            </div>
+            <div class="collapsible-body bottom-padding">
+                <div class="review-title">
+                    <h5>
+                        {{review.title}}
+                            <span class="float-right"><i class="material-icons">star</i>
+                            <span ng-if="review.rating>1"><i class="material-icons">star</i></span>
+                            <span ng-if="review.rating<=1"><i class="material-icons">star_border</i></span>
+                            <span ng-if="review.rating>2"><i class="material-icons">star</i></span>
+                            <span ng-if="review.rating<=2"><i class="material-icons">star_border</i></span>
+                            <span ng-if="review.rating>3"><i class="material-icons">star</i></span>
+                            <span ng-if="review.rating<=3"><i class="material-icons">star_border</i></span>
+                            <span ng-if="review.rating>4"><i class="material-icons">star</i></span>
+                            <span ng-if="review.rating<=4"><i class="material-icons">star_border</i></span></span>
+                    </h5>
+                </div>
+                <p>
+                    {{review.description}}
+                    <br><br>
+                    <span>
+                        {{review.helpful.length}}
+                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                        Helpful?
+                    </span>
+                </p>
+            </div>
+        </li>
+    </ul>
+</div>
 
 <wifi-loc8r-footer></wifi-loc8r-footer>

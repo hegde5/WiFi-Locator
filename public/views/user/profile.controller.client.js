@@ -7,15 +7,19 @@
         .controller("ProfileController", ProfileController);
 
 
-    function ProfileController(UserService, $routeParams) {
+    function ProfileController(UserService, $routeParams, ReviewService) {
         var vm = this;
         vm.init = init;
         var months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'];
         var userId = $routeParams.uid;
         vm.addToFollowing = addToFollowing;
         vm.getFollowers = getFollowers;
+        vm.getAllReviewsForUser = getAllReviewsForUser;
 
         function init() {
+            $(document).ready(function(){
+                $('.collapsible').collapsible();
+            });
             UserService
                 .findUserById(userId)
                 .success(function (userObj) {
@@ -29,7 +33,7 @@
                 })
                 .error(function (error) {
                     console.log(error.stack);
-                })
+                });
 
             getCurrentSessionUser();
         }
@@ -91,6 +95,17 @@
                     console.log(error.stack);
                 })
             
+        }
+
+        function getAllReviewsForUser() {
+            ReviewService
+                .getReviewsForUser(vm.sessionUser._id)
+                .success(function(reviews) {
+                    vm.reviews = reviews;
+                })
+                .error(function(error) {
+                    console.log("Could not get reviews\n"+error);
+                });
         }
 
 
