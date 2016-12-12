@@ -28,7 +28,7 @@
                     vm.user = userObj;
                     //vm.userId = userObj._id;
                     var d = new Date(vm.user.dateCreated);
-                    vm.user.dateCreated = months[d.getMonth()]+"-"
+                    vm.formattedDate = months[d.getMonth()]+"-"
                         +d.getDate()+", "+ d.getFullYear();
 
                     getFavoritesForUser();
@@ -70,6 +70,7 @@
                 .addToFollowing(vm.sessionUser._id, userId)
                 .success(function (userObj) {
                     vm.user=userObj;
+                    getFollowers();
                 })
                 .error(function (error) {
                     console.log(error.stack);

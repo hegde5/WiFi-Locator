@@ -90,30 +90,27 @@ module.exports = function() {
 
     function addToFollowing(userId, followingUserId) {
         return UserModel
-            .findById(followingUserId)
+            .findById(userId)
             .then(function(userObj) {
-                if(!userObj.followers) {
-                    userObj.followers = [];
+                if(!userObj.following) {
+                    userObj.following = [];
                 }
-                if(userObj.followers.indexOf(userId)==-1){
-                    userObj.followers.push(userId);
-                    return userObj.save();
+                if(userObj.following.indexOf(followingUserId)==-1){
+                    userObj.following.push(followingUserId);
+                    userObj.save();
                 }
-                return userObj;
-            })
-            .then(function(user) {
                 return UserModel
-                    .findById(userId)
+                    .findById(followingUserId)
                     .then(function(userObj) {
-                        if(!userObj.following) {
-                            userObj.following = [];
+                        if(!userObj.followers) {
+                            userObj.followers = [];
                         }
-                        if(userObj.following.indexOf(followingUserId)==-1){
-                            userObj.following.push(followingUserId);
+                        if(userObj.followers.indexOf(userId)==-1){
+                            userObj.followers.push(userId);
                             return userObj.save();
                         }
                         return userObj;
-                    })
+                    });
             });
     }
 

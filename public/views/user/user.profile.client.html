@@ -3,28 +3,40 @@
 
 
 <div class="row">
-    <div class="col s3">
-        <div id="modal1" class="modal modal-restrict-height">
-            <!--<div class="modal-content">-->
+    <div class="section">
+        <div class="col s1">
+            <img ng-src="../../assets/material-letters/{{model.user.firstName[0].toUpperCase()}}.png" class="user-profile-img float-right">
+        </div>
+
+        <div class="col s3">
+            <div id="modal2" class="modal modal-restrict-height">
+                <!--<div class="modal-content">-->
                 <h4>You are following {{model.user.firstName}} now!</h4>
-            <!--</div>-->
-        </div>
-        <div class="section">
-            <img ng-src="../../assets/material-letters/{{model.user.firstName[0].toUpperCase()}}.png" width="50px">
-            <h5 style="float: right">{{model.user.firstName}} {{model.user.lastName}}</h5>
-            <p style="float: right"><b>Email:</b> {{model.user.email}}<br>
+                <!--</div>-->
+            </div>
+            <h5>
+                {{model.user.firstName}} {{model.user.lastName}}
+            </h5>
+            <p><b>Email:</b> {{model.user.email}}<br>
                 <b>Phone:</b> {{model.user.phone}}<br>
-                <b>Joined:</b> {{model.user.dateCreated}}<br>
-                <b>Followers:</b> {{model.user.followers.length}}
+                <b>Joined:</b> {{model.formattedDate}}<br>
+                <b>Followers:</b> {{model.user.followers.length}}<br>
+                <span ng-show="model.user._id!=model.sessionUser._id">
+                        <span ng-if="!model.user.followers.includes(model.sessionUser._id)">
+                        <a class="btn-floating waves-effect waves-light red" data-target="modal2" ng-click="model.addToFollowing()">
+                        <i class="material-icons">add</i>
+                        </a>
+                    </span>
+                    <span ng-if="model.user.followers.includes(model.sessionUser._id)">
+                        <a class="btn-floating waves-effect waves-light green" data-target="modal2">
+                        <i class="material-icons">check</i>
+                        </a>
+                    </span>
+                </span>
+
             </p>
+
         </div>
-        <br><br>
-    </div>
-    <br>
-
-
-    <div class="col s1">
-        <a class="btn-floating btn-small waves-effect waves-light red float-right" data-target="modal1" ng-click="model.addToFollowing()"><i class="material-icons">add</i></a>
     </div>
 </div>
 <div class="divider"></div>

@@ -196,3 +196,8 @@ a, a:visited, a:hover, a:active {
     background-color: white;
 }
 
+.user-profile-img {
+    height: 50px;
+    width: auto;
+    vertical-align: middle;
+}
