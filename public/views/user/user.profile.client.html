@@ -32,7 +32,7 @@
 <div class="row">
 
     <div class="col s12 m6">
-        <div class="card favs">
+        <div class="card favs card-profile">
             <div class="card-content">
                 <span class="card-title white-text">Favorites</span>
                 <!--ng repeat over favorites here -->
@@ -61,14 +61,13 @@
     </div>
 
     <div class="col s12 m6">
-        <div class="card followers">
+        <div class="card followers card-profile">
             <div class="card-content">
                 <span class="card-title">Followers</span>
-                <!--ng repeat over favorites here -->
                 <div class="favBackground">
                     <ul ng-repeat=" follower in model.followers" class="collection pointer-cursor">
                         <li class="collection-item avatar fade-ul">
-                            <a ng-href="#/place/{{favoritePlace.placeId}}" class="no-underline">
+                            <a ng-href="#/user/{{follower._id}}" class="no-underline">
                                 <img ng-src="../../assets/material-letters/{{follower.firstName[0].toUpperCase()}}.png" class="circle">
                                 <div class="title">
                                     <p class="fav-p"><b>{{follower.firstName}} {{follower.lastName}}</b>

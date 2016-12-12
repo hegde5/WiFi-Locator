@@ -182,3 +182,7 @@ a, a:visited, a:hover, a:active {
     box-shadow: none !important;
 }
 
+.card-profile {
+    height: 500px;
+    overflow-y: scroll;
+}

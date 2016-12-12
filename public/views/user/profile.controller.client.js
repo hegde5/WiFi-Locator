@@ -16,6 +16,10 @@
         vm.getFollowers = getFollowers;
 
         function init() {
+            $(document).ready(function () {
+                $('.modal').modal();
+            });
+
             UserService
                 .findUserById(userId)
                 .success(function (userObj) {
@@ -70,6 +74,7 @@
                 .addToFollowing(vm.sessionUser._id, userId)
                 .success(function (userObj) {
                     openModal();
+                    getFollowers();
                 })
                 .error(function (error) {
                     console.log(error.stack);
@@ -78,6 +83,7 @@
 
         function openModal() {
             $('.modal').modal();
+
         }
         
         function getFollowers() {
