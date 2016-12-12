@@ -1,28 +1,30 @@
 <wifi-loc8r-header></wifi-loc8r-header>
 
-<div class="favs">
-    <div class="favBackground">
-    <ul ng-repeat=" favoritePlace in model.currentUserPlaces" class="collection pointer-cursor">
-        <li class="collection-item avatar fade-ul">
-            <a ng-href="#/place/{{favoritePlace.placeId}}" class="no-underline">
-                <img ng-src="{{favoritePlace.thumbnail}}" class="circle">
-                <div ng-if="favoritePlace.thumbnail == null">
-                    <img src="../../assets/cafe-office-laptop-01.jpg" class="circle">
-                </div>
-                <div class="title">
-                    <p class="fav-p"><b>{{favoritePlace.title}}</b> <i class="material-icons float-right">grade</i>
-                        <br>
-                        {{favoritePlace.address.street}}<br>
-                        {{favoritePlace.address.city}}, {{favoritePlace.address.postal}}
-                    </p>
-                </div>
-            </a>
+<main>
+    <div class="favs">
+        <div class="favBackground">
+        <ul ng-repeat=" favoritePlace in model.currentUserPlaces" class="collection pointer-cursor">
+            <li class="collection-item avatar fade-ul">
+                <a ng-href="#/place/{{favoritePlace.placeId}}" class="no-underline">
+                    <img ng-src="{{favoritePlace.thumbnail}}" class="circle">
+                    <div ng-if="favoritePlace.thumbnail == null">
+                        <img src="../../assets/cafe-office-laptop-01.jpg" class="circle">
+                    </div>
+                    <div class="title">
+                        <p class="fav-p"><b>{{favoritePlace.title}}</b> <i class="material-icons float-right">grade</i>
+                            <br>
+                            {{favoritePlace.address.street}}<br>
+                            {{favoritePlace.address.city}}, {{favoritePlace.address.postal}}
+                        </p>
+                    </div>
+                </a>
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+        </div>
     </div>
-</div>
+</main>
 
 
 

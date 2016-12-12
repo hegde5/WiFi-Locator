@@ -1,56 +1,60 @@
-<nav class="teal">
-    <div class="nav-wrapper">
-        <a href="#/search" class="brand-logo"><img src="../../assets/logo.png" class="logo-image"></a>
-        <a href="#!" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+<header>
+    <nav class="teal">
+        <div class="nav-wrapper">
+            <a href="#/search" class="brand-logo"><img src="../../assets/logo.png" class="logo-image"></a>
+            <a href="#!" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
-        <ul class="right hide-on-med-and-down">
-            <li class="active"><a href="#/search">Search</a></li>
-            <li><a class="waves-effect waves-light btn teal accent-3" href="#/register">Register</a></li>
-        </ul>
-    </div>
-</nav>
+            <ul class="right hide-on-med-and-down">
+                <li class="active"><a href="#/search">Search</a></li>
+                <li><a class="waves-effect waves-light btn teal accent-3" href="#/register">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
 
-<div class="jumbotron text-center jumbotron-bottom-margin-less">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col s3 m3"></div>
-            <div class="col s6 m6">
-                <div class="card">
-                    <span class="card-title">Login</span>
-                    <div ng-show="model.error" class="alert alert-danger" role="alert">
-                        {{model.error}}
-                    </div>
-                    <div class="card-content">
-                        <div class="row">
-                            <form class="col s12">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">account_circle</i>
-                                        <input id="email" type="email" class="validate" ng-model="model.email">
-                                        <label for="email">Email</label>
+<main>
+    <div class="jumbotron text-center jumbotron-bottom-margin-less">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col s3 m3"></div>
+                <div class="col s6 m6">
+                    <div class="card">
+                        <span class="card-title">Login</span>
+                        <div ng-show="model.error" class="alert alert-danger" role="alert">
+                            {{model.error}}
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">account_circle</i>
+                                            <input id="email" type="email" class="validate" ng-model="model.email">
+                                            <label for="email">Email</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">visibility</i>
-                                        <input id="password" type="password" class="validate" ng-model="model.password">
-                                        <label for="password">Password</label>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">visibility</i>
+                                            <input id="password" type="password" class="validate" ng-model="model.password">
+                                            <label for="password">Password</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <button class="btn waves-effect waves-light" name="action" ng-click="model.login();">
-                                    Login
-                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                </button>
-                            </form>
+                                    <button class="btn waves-effect waves-light" name="action" ng-click="model.login();">
+                                        Login
+                                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="col s3 m3"></div>
             </div>
-            <div class="col s3 m3"></div>
         </div>
     </div>
-</div>
+</main>
 
 <wifi-loc8r-footer class="teal footer-margin-top-less"></wifi-loc8r-footer>

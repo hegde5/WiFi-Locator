@@ -1,39 +1,41 @@
 <wifi-loc8r-header></wifi-loc8r-header>
-<h3 class="text-center">User Feedbacks</h3>
-<div class="jumbotron text-center user-feedback">
+<main>
+    <h3 class="text-center">User Feedbacks</h3>
+    <div class="jumbotron text-center user-feedback">
 
 
-    <br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
 
-</div>
+    </div>
 
-<ul ng-repeat="feedback in model.feedbacks" class="collection" style="opacity: 0.8">
-    <li class="collection-item avatar">
-        <img ng-src="../../assets/material-letters/{{feedback.user.firstName[0].toUpperCase()}}.png" class="circle">
-        <div class="title">
-            <p><b>{{feedback.user.firstName}} {{feedback.user.lastName}}</b>, {{feedback.user.email}}</p>
-        </div>
-
-        <div class="float-right">
-            <div class="chip">
-                {{feedback.title}}
+    <ul ng-repeat="feedback in model.feedbacks" class="collection" style="opacity: 0.8">
+        <li class="collection-item avatar">
+            <img ng-src="../../assets/material-letters/{{feedback.user.firstName[0].toUpperCase()}}.png" class="circle">
+            <div class="title">
+                <p><b>{{feedback.user.firstName}} {{feedback.user.lastName}}</b>, {{feedback.user.email}}</p>
             </div>
-        </div>
 
-        <div>
-            {{feedback.suggestion}}
+            <div class="float-right">
+                <div class="chip">
+                    {{feedback.title}}
+                </div>
+            </div>
 
-        </div>
-        <br>
-        <div>
-            <button class="btn waves-effect waves-light" name="action" ng-click="model.deleteFeedback(feedback._id)">
-                Delete
-                <i class="material-icons right">delete</i>
-            </button>
-        </div>
-        <!--<a href="#/place/{{eachPlace.ID}}" class="secondary-content"><i class="material-icons">keyboard_arrow_right</i></a>-->
+            <div>
+                {{feedback.suggestion}}
 
-    </li>
-</ul>
+            </div>
+            <br>
+            <div>
+                <button class="btn waves-effect waves-light" name="action" ng-click="model.deleteFeedback(feedback._id)">
+                    Delete
+                    <i class="material-icons right">delete</i>
+                </button>
+            </div>
+            <!--<a href="#/place/{{eachPlace.ID}}" class="secondary-content"><i class="material-icons">keyboard_arrow_right</i></a>-->
+
+        </li>
+    </ul>
+</main>
 
 <wifi-loc8r-footer class="lime darken-2"></wifi-loc8r-footer>

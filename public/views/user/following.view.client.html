@@ -1,16 +1,18 @@
 <wifi-loc8r-header></wifi-loc8r-header>
 
 
-<div ng-repeat="followee in model.followees" ng-if="$index % 3 == 0" class="row">
-    <div class="col m4 l4">
-        <user-card user="model.followees[$index]"></user-card>
+<main>
+    <div ng-repeat="followee in model.followees" ng-if="$index % 3 == 0" class="row">
+        <div class="col m4 l4">
+            <user-card user="model.followees[$index]"></user-card>
+        </div>
+        <div class="col m4 l4" ng-if="model.followees.length > ($index + 1)">
+            <user-card user="model.followees[$index + 1]"></user-card>
+        </div>
+        <div class="col m4 l4" ng-if="model.followees.length > ($index + 2)">
+            <user-card user="model.followees[$index + 2]"></user-card>
+        </div>
     </div>
-    <div class="col m4 l4" ng-if="model.followees.length > ($index + 1)">
-        <user-card user="model.followees[$index + 1]"></user-card>
-    </div>
-    <div class="col m4 l4" ng-if="model.followees.length > ($index + 2)">
-        <user-card user="model.followees[$index + 2]"></user-card>
-    </div>
-</div>
+</main>
 
 <wifi-loc8r-footer class="lime darken-2"></wifi-loc8r-footer>

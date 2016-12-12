@@ -2,136 +2,138 @@
 
 
 
-<div class="row">
-    <div class="section">
-        <div class="col s1">
-            <img ng-src="../../assets/material-letters/{{model.user.firstName[0].toUpperCase()}}.png" class="user-profile-img float-right">
-        </div>
-
-        <div class="col s3">
-            <div id="modal2" class="modal modal-restrict-height">
-                <!--<div class="modal-content">-->
-                <h4 class="text-center">You are following {{model.user.firstName}} now!</h4>
-                <!--</div>-->
+<main>
+    <div class="row">
+        <div class="section">
+            <div class="col s1">
+                <img ng-src="../../assets/material-letters/{{model.user.firstName[0].toUpperCase()}}.png" class="user-profile-img float-right">
             </div>
-            <h5>
-                {{model.user.firstName}} {{model.user.lastName}}
-            </h5>
-            <p><b>Email:</b> {{model.user.email}}<br>
-                <b>Phone:</b> {{model.user.phone}}<br>
-                <b>Joined:</b> {{model.formattedDate}}<br>
-                <b>Followers:</b> {{model.user.followers.length}}<br>
-                <span ng-show="model.user._id!=model.sessionUser._id">
-                        <span ng-if="!model.user.followers.includes(model.sessionUser._id)">
-                        <a class="btn-floating waves-effect waves-light red" data-target="modal2" ng-click="model.addToFollowing()">
-                        <i class="material-icons">add</i>
-                        </a>
-                    </span>
-                    <span ng-if="model.user.followers.includes(model.sessionUser._id)">
-                        <a class="btn-floating waves-effect waves-light green" data-target="modal2">
-                        <i class="material-icons">check</i>
-                        </a>
-                    </span>
-                </span>
 
-            </p>
+            <div class="col s3">
+                <div id="modal2" class="modal modal-restrict-height">
+                    <!--<div class="modal-content">-->
+                    <h4 class="text-center">You are following {{model.user.firstName}} now!</h4>
+                    <!--</div>-->
+                </div>
+                <h5>
+                    {{model.user.firstName}} {{model.user.lastName}}
+                </h5>
+                <p><b>Email:</b> {{model.user.email}}<br>
+                    <b>Phone:</b> {{model.user.phone}}<br>
+                    <b>Joined:</b> {{model.formattedDate}}<br>
+                    <b>Followers:</b> {{model.user.followers.length}}<br>
+                    <span ng-show="model.user._id!=model.sessionUser._id">
+                            <span ng-if="!model.user.followers.includes(model.sessionUser._id)">
+                            <a class="btn-floating waves-effect waves-light red" data-target="modal2" ng-click="model.addToFollowing()">
+                            <i class="material-icons">add</i>
+                            </a>
+                        </span>
+                        <span ng-if="model.user.followers.includes(model.sessionUser._id)">
+                            <a class="btn-floating waves-effect waves-light green" data-target="modal2">
+                            <i class="material-icons">check</i>
+                            </a>
+                        </span>
+                    </span>
 
+                </p>
+
+            </div>
         </div>
     </div>
-</div>
-<div class="divider"></div>
+    <div class="divider"></div>
 
-<div class="row">
+    <div class="row">
 
-    <div class="col s12 m6">
-        <div class="card favs card-profile">
-            <div class="card-content">
-                <span class="card-title white-text">Favorites</span>
-                <!--ng repeat over favorites here -->
-                <div class="favBackground">
-                    <ul ng-repeat=" favoritePlace in model.userFavorites" class="collection pointer-cursor">
-                        <li class="collection-item avatar fade-ul">
-                            <a ng-href="#/place/{{favoritePlace.placeId}}" class="no-underline">
-                                <img ng-src="{{favoritePlace.thumbnail}}" class="circle">
-                                <div ng-if="favoritePlace.thumbnail == null">
-                                    <img src="../../assets/cafe-office-laptop-01.jpg" class="circle">
-                                </div>
-                                <div class="title">
-                                    <p class="fav-p"><b>{{favoritePlace.title}}</b> <i class="material-icons float-right">grade</i>
-                                        <br>
-                                        {{favoritePlace.address.street}}<br>
-                                        {{favoritePlace.address.city}}, {{favoritePlace.address.postal}}
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+        <div class="col s12 m6">
+            <div class="card favs card-profile">
+                <div class="card-content">
+                    <span class="card-title white-text">Favorites</span>
+                    <!--ng repeat over favorites here -->
+                    <div class="favBackground">
+                        <ul ng-repeat=" favoritePlace in model.userFavorites" class="collection pointer-cursor">
+                            <li class="collection-item avatar fade-ul">
+                                <a ng-href="#/place/{{favoritePlace.placeId}}" class="no-underline">
+                                    <img ng-src="{{favoritePlace.thumbnail}}" class="circle">
+                                    <div ng-if="favoritePlace.thumbnail == null">
+                                        <img src="../../assets/cafe-office-laptop-01.jpg" class="circle">
+                                    </div>
+                                    <div class="title">
+                                        <p class="fav-p"><b>{{favoritePlace.title}}</b> <i class="material-icons float-right">grade</i>
+                                            <br>
+                                            {{favoritePlace.address.street}}<br>
+                                            {{favoritePlace.address.city}}, {{favoritePlace.address.postal}}
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
-
-    <div class="col s12 m6">
-        <div class="card followers card-profile">
-            <div class="card-content">
-                <span class="card-title">Followers</span>
-                <div class="favBackground">
-                    <ul ng-repeat=" follower in model.followers" class="collection pointer-cursor">
-                        <li class="collection-item avatar fade-ul">
-                            <a ng-href="#/user/{{follower._id}}" class="no-underline">
-                                <img ng-src="../../assets/material-letters/{{follower.firstName[0].toUpperCase()}}.png" class="circle">
-                                <div class="title">
-                                    <p class="fav-p"><b>{{follower.firstName}} {{follower.lastName}}</b>
-                                        <br>
-                                        {{follower.email}}<br>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+        <div class="col s12 m6">
+            <div class="card followers card-profile">
+                <div class="card-content">
+                    <span class="card-title">Followers</span>
+                    <div class="favBackground">
+                        <ul ng-repeat=" follower in model.followers" class="collection pointer-cursor">
+                            <li class="collection-item avatar fade-ul">
+                                <a ng-href="#/user/{{follower._id}}" class="no-underline">
+                                    <img ng-src="../../assets/material-letters/{{follower.firstName[0].toUpperCase()}}.png" class="circle">
+                                    <div class="title">
+                                        <p class="fav-p"><b>{{follower.firstName}} {{follower.lastName}}</b>
+                                            <br>
+                                            {{follower.email}}<br>
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
         </div>
-
     </div>
-</div>
 
-<div class="row">
-    <div class="col s12">
-        <div class="card reviews card-profile">
-            <div class="card-content">
-                <span class="card-title">Reviews</span>
-                <ul class="collapsible popout" data-collapsible="accordion">
-                    <li ng-repeat="review in model.reviews">
-                        <div class="collapsible-header">
-                            <img ng-src="{{review.place.thumbnail}}">
-                            <a href="#/place/{{review.place.placeId}}" class="collapsible-header-name">{{review.place.title}}</a>
-                            <div class="float-right">{{review.place.address.street}}, {{review.place.address.city}} {{review.place.address.postal}}</div>
-                        </div>
-                        <div class="collapsible-body bottom-padding white-background">
-                            <div class="review-title">
-                                <br>
-                                <h5>
-                                    {{review.title}}
-                                    <show-as-rating class="float-right" rating="review.rating"></show-as-rating>
-                                </h5>
+    <div class="row">
+        <div class="col s12">
+            <div class="card reviews card-profile">
+                <div class="card-content">
+                    <span class="card-title">Reviews</span>
+                    <ul class="collapsible popout" data-collapsible="accordion">
+                        <li ng-repeat="review in model.reviews">
+                            <div class="collapsible-header">
+                                <img ng-src="{{review.place.thumbnail}}">
+                                <a href="#/place/{{review.place.placeId}}" class="collapsible-header-name">{{review.place.title}}</a>
+                                <div class="float-right">{{review.place.address.street}}, {{review.place.address.city}} {{review.place.address.postal}}</div>
                             </div>
-                            <p>
-                                {{review.description}}
-                                <br><br>
-                    <span>
-                        {{review.helpful.length}}
-                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                        Helpful?
-                    </span>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
+                            <div class="collapsible-body bottom-padding white-background">
+                                <div class="review-title">
+                                    <br>
+                                    <h5>
+                                        {{review.title}}
+                                        <show-as-rating class="float-right" rating="review.rating"></show-as-rating>
+                                    </h5>
+                                </div>
+                                <p>
+                                    {{review.description}}
+                                    <br><br>
+                        <span>
+                            {{review.helpful.length}}
+                            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                            Helpful?
+                        </span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 
 <wifi-loc8r-footer class="lime darken-2"></wifi-loc8r-footer>
