@@ -53,6 +53,11 @@
                                 /*TODO figure out why the response is structured like this
                                 *  - maybe because of nesting these calls?*/
                                 vm.reviews = reviews.data;
+                                for(var r in vm.reviews) {
+                                    var d = new Date(vm.reviews[r].dateReviewed);
+                                    vm.reviews[r].dateReviewed = months[d.getMonth()]+"-"
+                                        +d.getDate()+", "+ d.getFullYear();
+                                }
                             });
                     }
                 })

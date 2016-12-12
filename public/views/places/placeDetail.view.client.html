@@ -7,10 +7,10 @@
     <div class="jumbotron jumbotron-bottom-less jumbotron-top-30">
         <!--TODO make this responsive: rearrange for mobile view-->
         <div class="row">
-            <div class="col s4 m4">
+            <div class="col s12 m4">
                 <img ng-src="{{model.place.full_img}}" alt="{{model.place.title}}" title="{{model.place.title}}" class="full-img"/>
             </div>
-            <div class="col s8 m8">
+            <div class="col s12 m8">
                 <span ng-show="model.place.status=='verified'" class="fa fa-check-circle text-muted" style="color:green;"> {{model.place.status}}</span>
                 <h2>{{model.place.title}}</h2>
                 <h5>{{model.place.street}}, {{model.place.city}} {{model.place.postal}}</h5>
@@ -30,8 +30,8 @@
         </div>
 
         <div class="row">
-            <div class="col s4 m4"></div>
-            <div class="col s8 m8">
+            <div class="col m4"></div>
+            <div class="col s12 m8">
                 <div class="row">
                     <div class="col s4 m4">
                         <div class="fa fa-arrow-down">
@@ -106,4 +106,4 @@
     <div ng-include="'views/reviews/reviews.view.client.html'"></div>
 </div>
 
-<wifi-loc8r-footer></wifi-loc8r-footer>
+<wifi-loc8r-footer class="lime darken-2"></wifi-loc8r-footer>

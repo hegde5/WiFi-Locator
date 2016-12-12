@@ -17,11 +17,6 @@
                 controller:"LoginController",
                 controllerAs:"model"
             })
-            .when("/forgotPassword",{
-                templateUrl:"/views/user/forgotPassword.view.client.html",
-                controller:"ForgotPasswordController",
-                controllerAs:"model"
-            })
             .when("/register", {
                 templateUrl: "/views/user/register.view.client.html",
                 controller: "RegisterController",
@@ -72,7 +67,10 @@
             .when("/favorites",{
                 templateUrl:"/views/places/favorites.view.client.html",
                 controller:"FavoritesController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
             })
             .when("/following",{
                 templateUrl: "/views/user/following.view.client.html",

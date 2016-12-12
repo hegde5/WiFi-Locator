@@ -26,15 +26,13 @@
                     vm.user = user;
                 });
 
-            /* TODO uncomment this before deploying
-            $.get("http://ipinfo.io", function(response) {
+            /*$.get("http://ipinfo.io", function(response) {
                 //console.log(response.ip, response.country, response.loc);
                 var loc = response.loc;
                 var locArray = loc.split(",");
                 vm.lat = locArray[0];
                 vm.long = locArray[1];
-            }, "jsonp")
-            */
+            }, "jsonp")*/
         }
         init();
 
@@ -67,16 +65,24 @@
                 {
                     $(".preloader-wrapper").show();
                     var radius = filterObj.text;
-                    PlaceService
-                        .searchPlacesByLocation(vm.lat,vm.long,radius)
-                        .success(function (result) {
-                            $(".preloader-wrapper").hide();
-                            vm.resultSet = result.response;
 
-                        })
-                        .error(function (error) {
-                            console.log(error.stack);
-                        });
+                    $.get("http://ipinfo.io", function(response) {
+                        //console.log(response.ip, response.country, response.loc);
+                        var loc = response.loc;
+                        var locArray = loc.split(",");
+                        vm.lat = locArray[0];
+                        vm.long = locArray[1];
+                        PlaceService
+                            .searchPlacesByLocation(vm.lat,vm.long,radius)
+                            .success(function (result) {
+                                $(".preloader-wrapper").hide();
+                                vm.resultSet = result.response;
+
+                            })
+                            .error(function (error) {
+                                console.log(error.stack);
+                            });
+                    }, "jsonp");
                 }
                 else if(filterObj.selected === "name")
                 {
