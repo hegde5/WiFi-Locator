@@ -10,6 +10,7 @@
         var api = {
             register        : register,
             login           : login,
+            findUserById    : findUserById,
             checkLoggedIn   : checkLoggedIn,
             checkAdmin      : checkAdmin,
             getCurrentUser  : getCurrentUser,
@@ -73,6 +74,7 @@
             return $http.get(url);
         }
 
+        //follpwingUSerId: params, userId: session
         function addToFollowing(userId, followingUserId) {
             return $http.put("/api/user/"+userId+"/following", {followingUserId:followingUserId});
         }
@@ -83,6 +85,11 @@
 
         function getFollowing(userId) {
             return $http.get("/api/user/"+userId+"/following");
+        }
+
+        function findUserById(userId) {
+            var url = "/api/user/" + userId;
+            return $http.get(url);
         }
     }
 })();
