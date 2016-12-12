@@ -196,6 +196,11 @@ a, a:visited, a:hover, a:active {
     background-color: white;
 }
 
+.card-profile {
+    height: 500px;
+    overflow-y: scroll;
+}
+
 .user-profile-img {
     height: 50px;
     width: auto;
