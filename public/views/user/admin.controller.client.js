@@ -13,7 +13,8 @@
         vm.init = init;
         vm.getAllFeedbacks = getAllFeedbacks;
         vm.deleteFeedback = deleteFeedback;
-
+        $("#tubular-container").remove();
+        $("#tubular-shield").css("z-index","0");
 
         function init() {
 

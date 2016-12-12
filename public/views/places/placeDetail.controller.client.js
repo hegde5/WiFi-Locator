@@ -10,7 +10,8 @@
         var vm=this;
         vm.placeId = $routeParams.id;
         vm.addToFavorites = addToFavorites;
-
+        $("#tubular-container").remove();
+        $("#tubular-shield").css("z-index","0");
 
         function init()
         {

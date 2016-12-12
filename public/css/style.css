@@ -201,8 +201,65 @@ a, a:visited, a:hover, a:active {
     overflow-y: scroll;
 }
 
+.child-scroll {
+    overflow-y: scroll;
+}
+
 .user-profile-img {
     height: 50px;
     width: auto;
     vertical-align: middle;
+}
+
+#sidenav-overlay {
+    z-index: 0 !important;
+}
+
+.side-nav {
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+.transparent-background {
+    background: transparent !important;
+}
+
+.margin-zero {
+    margin:0;
+}
+
+.white-text {
+    color: whitesmoke;
+}
+
+.glass-background {
+    background-color: rgba(0,0,0,0.4) !important;
+    height:315px;
+}
+
+.title-font {
+    /*font-family: 'Pacifico', cursive;*/
+    font-family: 'Lobster', cursive;
+}
+
+.one-line-font {
+    /*font-family: 'Alice', serif;*/
+    font-family: 'Special Elite', cursive;
+}
+
+.video-responsive {
+    width: 100%;
+    height: 315px;
+}
+
+.developer-img {
+    max-height: 20vh !important;
+    width: auto;
+}
+
+.a-hoverless:hover {
+    color: whitesmoke;
+}
+
+body {
+    font-family: 'Copse', serif !important;
 }

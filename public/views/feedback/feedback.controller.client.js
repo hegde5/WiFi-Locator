@@ -11,7 +11,8 @@
         var vm = this;
         vm.init = init;
         vm.submitFeedback = submitFeedback;
-
+        $("#tubular-container").remove();
+        $("#tubular-shield").css("z-index","0");
         function init() {
             UserService
                 .getCurrentUser()

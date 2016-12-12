@@ -9,6 +9,13 @@
     function RegisterController($location, $rootScope, UserService) {
         var vm=this;
         vm.register = register;
+        localStorage.setItem("justOnce", "false");
+
+        function init() {
+            $("#tubular-container").remove();
+            $("#tubular-shield").css("z-index","0");
+        }
+        init();
 
         function register() {
             vm.error=null;

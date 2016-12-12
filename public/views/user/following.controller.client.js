@@ -8,7 +8,8 @@
 
     function FollowingController(UserService) {
         var vm=this;
-
+        $("#tubular-container").remove();
+        $("#tubular-shield").css("z-index","0");
         function init() {
             UserService
                 .getCurrentUser()

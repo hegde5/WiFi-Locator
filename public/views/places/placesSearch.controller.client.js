@@ -12,9 +12,12 @@
         var vm = this;
         vm.init = init;
         vm.search = search;
+        localStorage.setItem("justOnce", "false");
 
         function init()
         {
+            $("#tubular-container").remove();
+            $("#tubular-shield").css("z-index","0");
             $(".preloader-wrapper").hide();
 
             UserService

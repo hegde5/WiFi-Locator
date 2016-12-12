@@ -8,15 +8,24 @@
 
     function SharedController() {
 
+        window.onload = function() {
+            if (localStorage.justOnce!=="true") {
+                localStorage.setItem("justOnce", "true");
+                window.location.reload();
+            }
+        }();
         $().ready(function() {
+            $(".button-collapse").sideNav();
+            $('.carousel').carousel();
             //FrzdLoI7w7A : HD Video
             //gGXejiDkFy0 : Family guy
+            //CqRBS19HjRQ : coffee beans
             $('#wrapper').tubular(
-                {videoId: '',
-                 start: 0,
-                 mute: false
-                }); // where idOfYourVideo is the YouTube ID.
-
+                {
+                    videoId: 'FrzdLoI7w7A',
+                    start: 0,
+                    mute: false
+                });
         });
         $('#myModal').modal();
     }

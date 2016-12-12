@@ -20,6 +20,8 @@
             $(document).ready(function(){
                 $('.collapsible').collapsible();
                 $('.modal').modal();
+                $("#tubular-container").remove();
+                $("#tubular-shield").css("z-index","0");
             });
             getCurrentSessionUser();
             UserService

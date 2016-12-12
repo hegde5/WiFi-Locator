@@ -18,6 +18,8 @@
             $(document).ready(function(){
                 $('.rating').addRating({fieldName:"reviewRating",fieldId:"reviewRating"});
                 $('.collapsible').collapsible();
+                $("#tubular-container").remove();
+                $("#tubular-shield").css("z-index","0");
             });
             UserService
                 .getCurrentUser()

@@ -1,19 +1,19 @@
 <div>
-    <nav>
+    <nav class="lime darken-2">
         <div class="nav-wrapper">
             <a href="#/search" class="brand-logo"><img src="../../assets/logo.png" class="logo-image"></a>
             <a href="#!" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
             <ul class="right hide-on-med-and-down">
-                <li class="active"><a href="#/search">Search</a></li>
+                <li><a href="#/search">Search</a></li>
                 <span ng-if="model.user._id">
                     <li><a href="#/favorites">My Favorites</a></li>
                     <li><a href="#/following">People I Follow</a></li>
                     <li><a class="modal-trigger waves-effect waves-light" data-target="modal1" ng-click="model.openModal()">Profile</a></li>
-                    <li><a class="waves-effect waves-light btn" ng-click="model.logout();">Logout</a></li>
+                    <li><a class="waves-effect waves-light btn deep-orange darken-3" ng-click="model.logout();">Logout</a></li>
                 </span>
                 <span ng-if="!model.user._id">
-                    <li><a class="waves-effect waves-light btn" href="#/login">Login</a></li>
+                    <li><a class="waves-effect waves-light btn deep-orange darken-3" href="#/login">Login</a></li>
                 </span>
             </ul>
         </div>

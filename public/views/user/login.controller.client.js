@@ -9,8 +9,11 @@
     function LoginController($location, UserService, $rootScope) {
         var vm = this;
         vm.login = login;
+        localStorage.setItem("justOnce", "false");
 
         function init() {
+            $("#tubular-container").remove();
+            $("#tubular-shield").css("z-index","0");
             UserService
                 .getCurrentUser()
                 .success(function(user) {
