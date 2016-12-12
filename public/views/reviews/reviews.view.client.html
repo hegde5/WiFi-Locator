@@ -27,7 +27,7 @@
             <li ng-repeat="review in model.reviews">
                 <div class="collapsible-header">
                     <img ng-src="../../assets/material-letters/{{review.user.firstName[0].toUpperCase()}}.png">
-                    <span class="collapsible-header-name">{{review.user.firstName}} {{review.user.lastName}}</span>
+                    <a href="#/user/{{review.user._id}}" class="collapsible-header-name">{{review.user.firstName}} {{review.user.lastName}}</a>
                     <div class="float-right">{{review.dateReviewed}}</div>
                 </div>
                 <div class="collapsible-body bottom-padding">
@@ -59,7 +59,7 @@
                         <ul class="collection" ng-if="model.comments">
                             <li class="collection-item avatar comment-list" ng-repeat="comment in model.comments">
                                 <img ng-src="../../assets/material-letters/{{comment.user.firstName[0].toUpperCase()}}.png">
-                                <span class="title">{{comment.user.firstName}} {{comment.user.lastName}}</span>
+                                <a href="#/user/{{comment.user._id}}" class="title">{{comment.user.firstName}} {{comment.user.lastName}}</a>
                                 <p>
                                     {{comment.text}}
                                 </p>

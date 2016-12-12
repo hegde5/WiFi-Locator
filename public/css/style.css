@@ -108,6 +108,11 @@ a, a:visited, a:hover, a:active {
     width: auto
 }
 
+.user-card img{
+    max-height: 30px;
+    width: auto
+}
+
 .collapsible-body p {
     padding-top: 0px;
 }
