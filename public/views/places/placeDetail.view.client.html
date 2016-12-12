@@ -17,10 +17,15 @@
                 <p class="desc-paragraph">{{model.place.description}}</p>
                 Type: {{model.place.type}}
                 <br><br>
-                <div class="fa fa-star-o" ng-if="!model.favStatus">
-                    <a class="no-underline" ng-click="model.addToFavorites()">Favorite</a></div>
-                <div class="fa fa-star" ng-if="model.favStatus">
-                    <a class="no-underline">Favorite</a></div>
+                <a class="no-underline pointer-cursor" ng-click="model.addToFavorites()">
+                        <span ng-if="model.favStatus">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </span>
+                        <span ng-if="!model.favStatus">
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </span>
+                    Favorite this!
+                </a>
             </div>
         </div>
 
@@ -98,9 +103,7 @@
         </div>
     </div>
 
-    <div ng-if="1"><!--check if logged in-->
-        <div ng-include="'views/reviews/reviews.view.client.html'"></div>
-    </div>
+    <div ng-include="'views/reviews/reviews.view.client.html'"></div>
 </div>
 
 <wifi-loc8r-footer></wifi-loc8r-footer>

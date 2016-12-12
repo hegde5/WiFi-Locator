@@ -29,24 +29,20 @@
                     console.log(error.stack);
                 });
 
-            PlaceService
-                .getPlaceByPlaceId(placeId)
-                .success(function (result) {
-                    vm.currentPlace = result;
-                    console.log("Current place Resulrt");
-                    console.dir(result);
-                })
-                .error(function (error) {
-                    console.log(error.stack);
-                });
-
             UserService
                 .getCurrentUser()
                 .success(function (user) {
-                    if(user)
-                    {
+                    if(user) {
                         vm.user = user;
-                        vm.favStatus = checkFavorites();
+                        PlaceService
+                            .getPlaceByPlaceId(placeId)
+                            .success(function (result) {
+                                vm.currentPlace = result;
+                                vm.favStatus = checkFavorites();
+                            })
+                            .error(function (error) {
+                                console.log(error.stack);
+                            });
                     }
                 })
                 .error(function (error) {
@@ -56,11 +52,9 @@
         init();
 
         function addToFavorites() {
-
             var flag = checkFavorites();
 
-            if(!flag)
-            {
+            if(!flag) {
                 var place = {
                     placeId: vm.place.ID,
                     placeSlug: vm.place.slug,
@@ -70,7 +64,7 @@
                         postal: vm.place.postal
                     },
                     title: vm.place.title,
-                    thumbnail: vm.place.full_img
+                    thumbnail: vm.place.thumbnail_img
                 };
 
                 UserService
@@ -86,35 +80,16 @@
         }
 
         function checkFavorites() {
-
-            if(vm.currentPlace === undefined || vm.currentPlace === '0')
-            {
-                console.log("In false");
-                console.dir(vm.currentPlace);
+            //place was not found in DB which means nobody has marked this as favorite yet
+            if(vm.currentPlace === undefined) {
                 return false;
             }
 
             var favoritePlaces = vm.user.favorites;
-            var favLen = favoritePlaces.length;
-            for(var i = 0; i <favLen; i++)
-            {
-                if(favoritePlaces[i] === vm.currentPlace._id)
-                {
-                    console.log(favoritePlaces[i]);
-                    console.log("-----");
-                    console.log(vm.currentPlace._id);
-                    return true;
-                }
-
+            if(favoritePlaces.indexOf(vm.currentPlace._id)!=-1) {
+                return true;
             }
             return false;
-        }
-
-
-        function setCarousel() {
-            $(document).ready(function(){
-                $('.carousel').carousel();
-            });
         }
     }
 })();

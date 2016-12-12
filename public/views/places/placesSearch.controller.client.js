@@ -23,13 +23,15 @@
                     vm.user = user;
                 });
 
-            // $.get("http://ipinfo.io", function(response) {
-            //     //console.log(response.ip, response.country, response.loc);
-            //     var loc = response.loc;
-            //     var locArray = loc.split(",");
-            //     vm.lat = locArray[0];
-            //     vm.long = locArray[1];
-            // }, "jsonp")
+            /* TODO uncomment this before deploying
+            $.get("http://ipinfo.io", function(response) {
+                //console.log(response.ip, response.country, response.loc);
+                var loc = response.loc;
+                var locArray = loc.split(",");
+                vm.lat = locArray[0];
+                vm.long = locArray[1];
+            }, "jsonp")
+            */
         }
         init();
 
@@ -40,12 +42,9 @@
                 (filterObj.name=="" && filterObj.zipcode=="") ||
                 (!filterObj.name && filterObj.zipcode=="") ||
                 (!filterObj.zipcode && filterObj.name=="")
-            )
-            {
+            ) {
                 vm.error = "Please enter user search term";
-            }
-            else
-            {
+            } else {
                 if(filterObj.selected === "zipcode")
                 {
                     $(".preloader-wrapper").show();
