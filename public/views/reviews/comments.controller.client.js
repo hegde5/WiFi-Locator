@@ -10,7 +10,8 @@
         var vm=this;
         vm.postComment = postComment;
         vm.getCommentsForReview = getCommentsForReview;
-
+        $("#tubular-container").remove();
+        $("#tubular-shield").css("z-index","0");
         function init()
         {
             vm.reviewId = $scope.review._id;

@@ -13,6 +13,8 @@
         vm.getAllReviews = getAllReviews;
         vm.markHelpful = markHelpful;
 
+        $("#tubular-container").remove();
+        $("#tubular-shield").css("z-index","0");
         function init()
         {
             $(document).ready(function(){

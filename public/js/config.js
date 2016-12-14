@@ -35,19 +35,19 @@
                     checkLoggedIn: checkLoggedIn
                 }
             })
-            .when("/user/:uid",{
-                templateUrl:"/views/user/user.profile.client.html",
-                controller:"ProfileController",
-                controllerAs:"model",
-                resolve:{
-                    checkLoggedIn: checkLoggedIn
-                }
-            })
             .when("/user/feedback",{
                 templateUrl:"/views/feedback/feedback.view.client.html",
                 controller:"FeedbackController",
                 controllerAs:"model",
                 resolve: {
+                    checkLoggedIn: checkLoggedIn
+                }
+            })
+            .when("/user/:uid",{
+                templateUrl:"/views/user/user.profile.client.html",
+                controller:"ProfileController",
+                controllerAs:"model",
+                resolve:{
                     checkLoggedIn: checkLoggedIn
                 }
             })

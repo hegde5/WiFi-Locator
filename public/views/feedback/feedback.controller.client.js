@@ -11,6 +11,7 @@
         var vm = this;
         vm.init = init;
         vm.submitFeedback = submitFeedback;
+
         $("#tubular-container").remove();
         $("#tubular-shield").css("z-index","0");
         function init() {
@@ -18,6 +19,7 @@
                 .getCurrentUser()
                 .success(function (user) {
                     vm.user = user;
+                    $('.modal').modal();
                 })
         }
         init();
