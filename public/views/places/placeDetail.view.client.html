@@ -10,6 +10,9 @@
             <div class="row">
                 <div class="col s12 m4">
                     <img ng-src="{{model.place.full_img}}" alt="{{model.place.title}}" title="{{model.place.title}}" class="full-img"/>
+                    <div ng-if="model.place.full_img == null">
+                        <img src="../../assets/default-place.jpg" class="full-img">
+                    </div>
                 </div>
                 <div class="col s12 m8">
                     <span ng-show="model.place.status=='verified'" class="fa fa-check-circle text-muted" style="color:green;"> {{model.place.status}}</span>

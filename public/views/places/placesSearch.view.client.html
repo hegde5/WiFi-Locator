@@ -84,6 +84,9 @@
         <ul ng-repeat="eachPlace in model.resultSet" class="collection">
             <li class="collection-item avatar">
                 <img ng-src="{{eachPlace.thumbnail_img}}" alt="thumb" class="circle">
+                <div ng-if="eachPlace.thumbnail_img == ''">
+                    <img src="../../assets/default-place.jpg" class="circle">
+                </div>
                 <a href="#/place/{{eachPlace.ID}}" class="no-underline">
                     <div class="title">{{eachPlace.title}}</div>
                     <div>
