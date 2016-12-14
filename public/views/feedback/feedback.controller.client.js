@@ -19,7 +19,6 @@
                 .getCurrentUser()
                 .success(function (user) {
                     vm.user = user;
-                    $('.modal').modal();
                 })
         }
         init();
@@ -34,7 +33,6 @@
                 FeedbackService
                     .submitFeedback(vm.feedback)
                     .success(function (feedback) {
-                        $('.modal').modal();
                         //$('#modal1').modal('close');
                         $location.url("/search")
                     })
