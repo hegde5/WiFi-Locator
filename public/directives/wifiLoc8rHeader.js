@@ -34,7 +34,7 @@
         vm.deleteUser = deleteUser;
 
         $(document).ready(function() {
-            $(".button-collapse").sideNav();
+            $(".button-collapse").sideNav({'closeOnClick': true});
         });
         function openModal()
         {
@@ -57,7 +57,7 @@
             UserService
                 .logout()
                 .success(function(status) {
-                    if(status) $location.url("/login");
+                    if(status) $location.url("/");
                 })
                 .error(function(err) {
 

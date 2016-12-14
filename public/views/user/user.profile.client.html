@@ -5,11 +5,11 @@
 <main>
     <div class="row">
         <div class="section">
-            <div class="col s1">
+            <div class="col m1 s2">
                 <img ng-src="../../assets/material-letters/{{model.user.firstName[0].toUpperCase()}}.png" class="user-profile-img float-right">
             </div>
 
-            <div class="col s3">
+            <div class="col m3 s6">
                 <div id="modal2" class="modal modal-restrict-height">
                     <!--<div class="modal-content">-->
                     <h4 class="text-center">You are following {{model.user.firstName}} now!</h4>
@@ -105,7 +105,7 @@
                     <span class="card-title">Reviews</span>
                     <ul class="collapsible popout" data-collapsible="accordion">
                         <li ng-repeat="review in model.reviews">
-                            <div class="collapsible-header">
+                            <div class="collapsible-header white-text dimgray-background">
                                 <img ng-src="{{review.place.thumbnail}}">
                                 <a href="#/place/{{review.place.placeId}}" class="collapsible-header-name">{{review.place.title}}</a>
                                 <div class="float-right">{{review.place.address.street}}, {{review.place.address.city}} {{review.place.address.postal}}</div>

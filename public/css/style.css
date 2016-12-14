@@ -195,7 +195,7 @@ a, a:visited, a:hover, a:active {
 
 .card-profile {
     height: 500px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .child-scroll {
@@ -260,4 +260,8 @@ a, a:visited, a:hover, a:active {
 
 body {
     font-family: 'Copse', serif !important;
+}
+
+.dimgray-background {
+    background-color: dimgray !important
 }

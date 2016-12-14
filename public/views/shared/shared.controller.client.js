@@ -15,7 +15,7 @@
             }
         }();
         $().ready(function() {
-            $(".button-collapse").sideNav();
+            $(".button-collapse").sideNav({'closeOnClick': true});
             $('.carousel').carousel();
             //FrzdLoI7w7A : HD Video
             //gGXejiDkFy0 : Family guy
