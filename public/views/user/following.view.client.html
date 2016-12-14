@@ -2,6 +2,9 @@
 
 
 <main>
+    <div ng-show="model.followees.length==0">
+        <h4><span class="text-muted">No People to show</span></h4>
+    </div>
     <div ng-repeat="followee in model.followees" ng-if="$index % 3 == 0" class="row">
         <div class="col m4 l4">
             <user-card user="model.followees[$index]"></user-card>

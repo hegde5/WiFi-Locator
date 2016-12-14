@@ -25,14 +25,6 @@
                 .success(function (user) {
                     vm.user = user;
                 });
-
-            /*$.get("http://ipinfo.io", function(response) {
-                //console.log(response.ip, response.country, response.loc);
-                var loc = response.loc;
-                var locArray = loc.split(",");
-                vm.lat = locArray[0];
-                vm.long = locArray[1];
-            }, "jsonp")*/
         }
         init();
 

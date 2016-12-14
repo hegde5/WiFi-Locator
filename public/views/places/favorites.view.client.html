@@ -1,7 +1,11 @@
 <wifi-loc8r-header></wifi-loc8r-header>
 
 <main>
+    <div ng-show="model.currentUserPlaces.length==0">
+        <h4><span class="text-muted">No Places to show</span></h4>
+    </div>
     <div class="favs">
+
         <div class="favBackground">
         <ul ng-repeat=" favoritePlace in model.currentUserPlaces" class="collection pointer-cursor">
             <li class="collection-item avatar fade-ul">
