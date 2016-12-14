@@ -32,7 +32,7 @@
                             $rootScope.currentUser = user;
                             $location.url("/search");
                         }
-                        else vm.error="Username already exists! Try logging in"
+                        else vm.error="User with email already exists! Try logging in"
                     })
                     .error(function(err) {
                         console.log("Registration error: "+err);

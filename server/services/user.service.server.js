@@ -111,19 +111,33 @@ module.exports = function(app, model) {
 
     function register(req, res) {
         var user = req.body;
-        user.password = bcrypt.hashSync(user.password);
         model
             .userModel
-            .createUser(user)
+            .findUserByEmail(user.email)
             .then(
-                function(user) {
-                    req.login(user, function(err) {
-                        if(err) {
-                            res.sendStatus(400).send(err);
-                        } else {
-                            res.send(user);
-                        }
-                    });
+                function(existingUser) {
+                    if(existingUser) {
+                        res.send(undefined);
+                    } else {
+                        user.password = bcrypt.hashSync(user.password);
+                        model
+                            .userModel
+                            .createUser(user)
+                            .then(
+                                function(user) {
+                                    req.login(user, function(err) {
+                                        if(err) {
+                                            res.sendStatus(400).send(err);
+                                        } else {
+                                            res.send(user);
+                                        }
+                                    });
+                                },
+                                function(error) {
+                                    res.sendStatus(400).send(error);
+                                }
+                            );
+                    }
                 },
                 function(error) {
                     res.sendStatus(400).send(error);
